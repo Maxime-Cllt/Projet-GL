@@ -26,7 +26,9 @@ public class MainWindow extends JFrame implements VueG {
     private JList list;
 
     public MainWindow() {
-        super("CompteurSwing");
+        super("Fruit");
+        // set Mini size
+        this.setMinimumSize(new Dimension(500, 500));
         inc = new JButton("+");
         dec = new JButton("-");
         list = new JList();
