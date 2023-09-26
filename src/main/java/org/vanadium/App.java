@@ -18,43 +18,23 @@ import org.vanadium.view.VueG;
  * @author Rahman YILMAZ
  * @author Rémy Barranco
  */
-public class main {
+public class App {
     private VueG vueg;
     private ControleurBtn controleur;
-    
 
-    public VueG getVueg() {
-        return vueg;
-    }
-
-    public void setVueg(VueG vueg) {
-        this.vueg = vueg;
-    }
-
-
-    public ControleurBtn getControleur() {
-        return controleur;
-    }
-
-    public void setControleur(ControleurBtn controleur) {
-        this.controleur = controleur;
-    }
-    
-    
-    public main() throws PanierPleinException {
-        //sans utiliser SpringIoC :
+    public App() throws PanierPleinException {
         vueg = new MainWindow();
         controleur = new ControleurBtn();
         Panier modele = new Panier(100);
         VueConsole vuec = new VueConsole();
 
         controleur.setModele(modele);
-        modele.addObserver(vueg);        
+        modele.addObserver(vueg);
         modele.addObserver(vuec);
         vueg.addControleur(controleur);
     }
-    
+
     public static void main(String[] args) throws PanierPleinException {
-        main test = new main();    //sans utiliser SpringIoC
+        App test = new App();
     }
 }
