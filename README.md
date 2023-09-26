@@ -38,7 +38,7 @@ Cette application est conçue pour fournir une interface utilisateur graphique s
 1. Clonez ce dépôt sur votre machine locale :
 
 ```shell
-git clone https://github.com/votre-utilisateur/Projet-GL.git
+git clone https://github.com/Maxime-Cllt/Projet-GL.git
 ```
 
 <h2 id="documentation">Documentation :</h2>
