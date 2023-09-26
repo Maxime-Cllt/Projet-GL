@@ -8,6 +8,7 @@ package org.vanadium.controler;
 import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 import org.vanadium.model.panier.Panier;
+import org.vanadium.view.CreateFruitDialog;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,9 +28,10 @@ public class ControleurBtn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {   //Invoked when an action occurs
         try {
-            if (((Component) e.getSource()).getName().equals("Plus"))
-                m.ajout(new Orange(Math.random() * 3, Orange.randomPays()));
-            else {
+            if (((Component) e.getSource()).getName().equals("Plus")) {
+                CreateFruitDialog dialog = new CreateFruitDialog(null, "Create Fruit", true);
+                dialog.setVisible(true);
+            } else {
                 if (selectedFruits.size() > 0) {
                     for (Fruit fruit : selectedFruits) {
                         m.retrait(fruit);

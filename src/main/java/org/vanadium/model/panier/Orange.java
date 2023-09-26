@@ -51,6 +51,11 @@ public class Orange implements Fruit {
     }
 
     @Override
+    public String getImg() {
+        return System.getProperty("user.dir") + "/ressources/" + Fruit.imgClass.get(this.getClass());
+    }
+
+    @Override
     public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
         if (o != null && getClass() == o.getClass()) {
             Orange or = (Orange) o;
