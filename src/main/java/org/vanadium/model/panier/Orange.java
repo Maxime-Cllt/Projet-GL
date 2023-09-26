@@ -1,8 +1,12 @@
 package org.vanadium.model.panier;
 
 /**
- * @author roudet
+ * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
+
 public class Orange implements Fruit {
     private double prix;
     private Pays origine;

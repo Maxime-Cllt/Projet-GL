@@ -3,7 +3,10 @@ package org.vanadium.model.panier;
 import java.util.*;
 
 /**
- * @author roudet
+  * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
 public class Panier extends Observable {
     private ArrayList<Fruit> fruits;  //attribut pour stocker les fruits

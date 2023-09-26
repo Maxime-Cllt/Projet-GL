@@ -8,15 +8,15 @@ package org.vanadium;
 import org.vanadium.controler.ControleurBtn;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
-import org.vanadium.view.VueConsole;
-
-//utilise pour springIoC :
-import org.vanadium.view.VueG;
 import org.vanadium.view.MainWindow;
+import org.vanadium.view.VueConsole;
+import org.vanadium.view.VueG;
 
 /**
- *
- * @author celine
+ * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
 public class main {
     private VueG vueg;
