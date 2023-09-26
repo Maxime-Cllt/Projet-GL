@@ -11,7 +11,10 @@ import java.util.*;
 
 /**
  *
- * @author celine
+  * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
 public class VueConsole implements Observer{
     private String trace;

@@ -12,7 +12,10 @@ import java.util.*;
 
 /**
  *
- * @author celine
+  * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
 public interface VueG extends Observer {
     @Override

@@ -10,11 +10,15 @@ import org.vanadium.model.panier.Orange;
 import org.vanadium.model.panier.Panier;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * @author celine
+ * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
  */
 public class ControleurBtn implements ActionListener {
     private Panier m;
