@@ -10,21 +10,39 @@ import java.util.Map;
  * @author Rémy Barranco
  */
 public interface Fruit {
-    public boolean isSeedless();
+    Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
+            Map.of(
+                    Orange.class, "orange.png"
+//                    Banane.class, "bananes.png",
+//                    Pomme.class, "pomme.png"
+            )
+    );
+    Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
+            Map.of(
+                    Type.ORANGE, "orange.png",
+                    Type.BANANE, "bananes.png",
+                    Type.POMME, "pomme.png"
+            )
+    );
 
-    public double getPrix();
+    boolean isSeedless();
 
-    public Pays getOrigine();
+    double getPrix();
+    void setPrix(double prix);
+
+    Pays getOrigine();
+    void setOrigine(Pays origine);
 
     @Override
-    public boolean equals(Object o);
+    boolean equals(Object o);
 
     @Override
-    public String toString();
+    String toString();
 
-    public String getImg();
+    String getImg();
 
-    public enum Pays {
+
+    enum Pays {
         FRANCE("France"),
         ESPAGNE("Espagne"),
         PORTUGAL("Portugal"),
@@ -45,8 +63,7 @@ public interface Fruit {
         }
     }
 
-
-    public enum Type {
+    enum Type {
         ORANGE("Orange"),
         BANANE("Banane"),
         POMME("Pomme"),
@@ -63,22 +80,4 @@ public interface Fruit {
             return name;
         }
     }
-
-
-    static Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
-            Map.of(
-                    Orange.class, "orange.png"
-//                    Banane.class, "bananes.png",
-//                    Pomme.class, "pomme.png"
-            )
-    );
-
-    static Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
-            Map.of(
-                    Type.ORANGE, "orange.png"
-//                    Type.BANANE, "bananes.png",
-//                    Type.POMME, "pomme.png"
-            )
-    );
-
 }

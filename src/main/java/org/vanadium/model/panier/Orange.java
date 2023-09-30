@@ -11,11 +11,6 @@ public class Orange implements Fruit {
     private double prix;
     private Pays origine;
 
-    public static Pays randomPays() {
-        int pick = new java.util.Random().nextInt(Pays.values().length);
-        return Pays.values()[pick];
-    }
-
     public Orange() {
         this.prix = 0.5;
         this.origine = Pays.INCONNU;
@@ -27,6 +22,16 @@ public class Orange implements Fruit {
         else
             this.prix = prix;
         this.origine = origine;
+    }
+
+    public static Pays randomPays() {
+        int pick = new java.util.Random().nextInt(Pays.values().length);
+        return Pays.values()[pick];
+    }
+
+    public static void main(String[] args) {
+        //Ecrire ici vos tests
+        System.out.println("premier test Orange");
     }
 
     public double getPrix() {
@@ -66,11 +71,5 @@ public class Orange implements Fruit {
 
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
-    }
-
-
-    public static void main(String[] args) {
-        //Ecrire ici vos tests
-        System.out.println("premier test Orange");
     }
 }

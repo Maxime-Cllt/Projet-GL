@@ -1,34 +1,33 @@
 package org.vanadium.model.panier;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Observable;
 
 /**
-  * @author Maxime Colliat
+ * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
  */
 public class Panier extends Observable {
-    private ArrayList<Fruit> fruits;  //attribut pour stocker les fruits
-    private int contenanceMax;        //nb maximum d'oranges que peut contenir le panier
+    private HashMap<Fruit,Double> fruits;
+    private final int contenanceMax;
 
-    //groupe 1
-    public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-        fruits = new ArrayList<Fruit>();
+    public Panier(int contenanceMax) {
+        fruits = new HashMap<>();
         this.contenanceMax = contenanceMax;
     }
 
     @Override
-    public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        return "";
-    }
+    public String toString() {return "";}
 
     //groupe 2
-    public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
+    public HashMap<Fruit,Double> getFruits() {  //accesseur du premier attribut
         return fruits;
     }
 
-    public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
+    public void setFruits(HashMap<Fruit,Double> fruits) { //modificateur du premier attribut
         this.fruits = fruits;
     }
 
@@ -40,13 +39,8 @@ public class Panier extends Observable {
         return contenanceMax;
     }
 
-    //groupe 3
-    public Fruit getFruit(int i) {  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
-        return fruits.get(i);
-    }
-
-    public void setFruit(int i, Fruit f) {  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-        fruits.set(i, f);
+    public Fruit getFruit(int i) {
+        return (Fruit) fruits.keySet().toArray()[i];
     }
 
     public boolean estVide() {  //predicat indiquant que le panier est vide
@@ -57,13 +51,12 @@ public class Panier extends Observable {
         return fruits.size() == contenanceMax;
     }
 
-    //groupe 4
-    public void ajout(Fruit o) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-        if (fruits.contains(o)) {
+    public void ajout(Map.Entry<Fruit,Double> fruitQuantity) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+        if (fruits.containsKey(fruitQuantity.getKey())) {
             return;
         }
         if (fruits.size() < contenanceMax) {
-            fruits.add(o);
+            fruits.put(fruitQuantity.getKey(),fruitQuantity.getValue());
         } else {
             throw new PanierPleinException();
         }
@@ -71,7 +64,6 @@ public class Panier extends Observable {
         notifyObservers(this);
     }
 
-    //groupe 5
     public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
         if (fruits.size() == 0) {
             throw new PanierVideException();
@@ -87,35 +79,31 @@ public class Panier extends Observable {
         notifyObservers(this);
     }
 
-    //groupe 6
     public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
 
         double prix = 0;
-        for (Fruit f : fruits) {
-            prix += f.getPrix();
+        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+            prix += fruitQuantity.getKey().getPrix() * fruitQuantity.getValue();
         }
         return prix;
     }
 
-    //groupe 7
-    public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
-        for (Fruit f : fruits) {
-            if (f.getOrigine().equals(origine)) {
-                fruits.remove(f);
+    public void boycotteOrigine(Fruit.Pays origine) {  //supprime du panier tous les fruits provenant du pays origine
+        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+            if (fruitQuantity.getKey().getOrigine() == origine) {
+                fruits.remove(fruitQuantity.getKey());
             }
         }
     }
 
-    //groupe 8    
     @Override
     public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
         if (o != null && getClass() == o.getClass()) {
             Panier p = (Panier) o;
             int compt = 0;
             if (p.fruits.size() == this.fruits.size()) {
-                for (Fruit f : p.fruits) {
-                    if (this.fruits.contains(f)) {
-                        System.out.println(f);
+                for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+                    if (p.fruits.containsKey(fruitQuantity.getKey())) {
                         compt++;
                     }
                 }
