@@ -4,11 +4,12 @@ import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.PrimitiveIterator;
+import java.util.Map;
+
+import org.vanadium.model.Factory;
 
 public class CreateFruitDialog extends JDialog {
     private Fruit _fruit;
@@ -23,17 +24,18 @@ public class CreateFruitDialog extends JDialog {
     private JLabel _img;
     private JButton _ok;
 
-    public CreateFruitDialog(JFrame parent, String title, boolean modal) {
-        super(parent, title, modal);
-        this.setSize(500, 200);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+    public CreateFruitDialog() {
+        super((java.awt.Frame) null, true);
+        setTitle("Ajouter un Fruit");
+        setMinimumSize(new Dimension(500, 250));
+        this.setResizable(true);
+        setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         this.initComponent();
     }
 
     private void initComponent() {
         JPanel pan = new JPanel();
+        pan.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         _pays = new JComboBox<>(Fruit.Pays.values());
         _type = new JComboBox<>(Fruit.Type.values());
@@ -46,7 +48,6 @@ public class CreateFruitDialog extends JDialog {
         Image image = img.getImage(); // transform it
         Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         _img = new JLabel(new ImageIcon(newimg));
-        System.out.println(System.getProperty("user.dir"));
 
 
         // for type, pays, and prix add jlabel
@@ -89,16 +90,27 @@ public class CreateFruitDialog extends JDialog {
 
         this.setContentPane(pan);
 
-        this.setVisible(true);
-
         // change img when type change
-        _type.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println("Type changed");
-                _img.setIcon(new ImageIcon(new Orange().getImg()));
+        _type.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                ImageIcon img1 = new ImageIcon(System.getProperty("user.dir") + "/ressources/" + Fruit.imgType.get(_type.getSelectedItem()));
+                Image image1 = img1.getImage();
+                Image newimg1 = image1.getScaledInstance(32, 32, Image.SCALE_SMOOTH); // scale it the smooth way
+                _img.setIcon(new ImageIcon(newimg1));
+
             }
         });
-    }
 
+
+        _ok.addActionListener(e -> {
+            _fruit = Factory.createFruit((Fruit.Type) _type.getSelectedItem());
+            _fruit.setOrigine((Fruit.Pays) _pays.getSelectedItem());
+            _fruit.setPrix((double) _prix.getValue());
+            dispose();
+        });
+
+    }
+    public Map.Entry<Fruit,Double> getFruit() {
+        return Map.entry(_fruit, (double) _quantity.getValue());
+    }
 }

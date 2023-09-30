@@ -19,8 +19,8 @@ import org.vanadium.view.VueG;
  * @author Rémy Barranco
  */
 public class App {
-    private VueG vueg;
-    private ControleurBtn controleur;
+    private final VueG vueg;
+    private final ControleurBtn controleur;
 
     public App() throws PanierPleinException {
         vueg = new MainWindow();

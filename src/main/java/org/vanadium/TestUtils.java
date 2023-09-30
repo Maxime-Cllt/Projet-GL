@@ -5,33 +5,35 @@
  */
 package org.vanadium;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 
 /**
- *
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
  */
 public class TestUtils {
-    
+
     public static Component getChildNamed(Component parent, String name) {
-         // Debug line
-         //System.out.println("Class: " + parent.getClass() +
-         //    " Name: " + parent.getName());
-         if (name.equals(parent.getName())) { return parent; }
-   
-         if (parent instanceof Container) {
-            Component[] children = ((Container)parent).getComponents();
-   
+        // Debug line
+        //System.out.println("Class: " + parent.getClass() +
+        //    " Name: " + parent.getName());
+        if (name.equals(parent.getName())) {
+            return parent;
+        }
+
+        if (parent instanceof Container) {
+            Component[] children = ((Container) parent).getComponents();
+
             for (int i = 0; i < children.length; ++i) {
-               Component child = getChildNamed(children[i], name);
-               if (child != null) { return child; }
+                Component child = getChildNamed(children[i], name);
+                if (child != null) {
+                    return child;
+                }
             }
-         }
-         return null;
+        }
+        return null;
     }
 }
 
