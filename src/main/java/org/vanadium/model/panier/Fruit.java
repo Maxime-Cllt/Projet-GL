@@ -35,7 +35,10 @@ public interface Fruit {
 
         private String name = "";
 
-        //Constructeur
+        /**
+         * @param name
+         * @brief Constructeur de l'enum Pays avec paramètre name du pays en question en String (ex: "France")
+         */
         Pays(String name) {
             this.name = name;
         }
@@ -54,7 +57,10 @@ public interface Fruit {
 
         private String name = "";
 
-        //Constructeur
+        /**
+         * @param name nom du type de fruit
+         * @brief Constructeur de l'enum Type de fruit avec paramètre name
+         */
         Type(String name) {
             this.name = name;
         }
@@ -65,19 +71,25 @@ public interface Fruit {
     }
 
 
+    /**
+     * @brief Map des images des fruits par classe de fruit
+     */
     static Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
             Map.of(
-                    Orange.class, "orange.png"
-//                    Banane.class, "bananes.png",
-//                    Pomme.class, "pomme.png"
+                    Orange.class, "orange.png",
+                    Banane.class, "bananes.png",
+                    Pomme.class, "pomme.png"
             )
     );
 
+    /**
+     * @brief Map des images des fruits par type de fruit
+     */
     static Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
             Map.of(
-                    Type.ORANGE, "orange.png"
-//                    Type.BANANE, "bananes.png",
-//                    Type.POMME, "pomme.png"
+                    Type.ORANGE, "orange.png",
+                    Type.BANANE, "bananes.png",
+                    Type.POMME, "pomme.png"
             )
     );
 
