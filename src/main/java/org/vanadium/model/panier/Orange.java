@@ -84,10 +84,4 @@ public class Orange implements Fruit {
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
     }
-
-
-    public static void main(String[] args) {
-        //Ecrire ici vos tests
-        System.out.println("premier test Orange");
-    }
 }

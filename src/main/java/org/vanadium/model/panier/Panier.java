@@ -1,6 +1,7 @@
 package org.vanadium.model.panier;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 
 /**
@@ -11,15 +12,15 @@ import java.util.Observable;
  */
 
 public class Panier extends Observable {
-    private ArrayList<Fruit> fruits; //Liste des fruits presents dans le panier
-    private final int contenanceMax; //Nombre d'oranges max dans le panier
+    private HashMap<Fruit,Double> fruits;
+    private final int contenanceMax;
 
     /**
      * @param contenanceMax
      * @brief Constructeur par défaut
      */
     public Panier(int contenanceMax) {
-        this.fruits = new ArrayList<Fruit>();
+        fruits = new HashMap<>();
         this.contenanceMax = contenanceMax;
     }
 
@@ -35,6 +36,8 @@ public class Panier extends Observable {
                 '}';
     }
 
+    //groupe 2
+    public HashMap<Fruit,Double> getFruits() {  //accesseur du premier attribut
     /**
      * @return ArrayList<Fruit> la liste des fruits du panier
      * @brief Accesseur du premier attribut (nb d'oranges max dans le panier)
@@ -47,7 +50,7 @@ public class Panier extends Observable {
      * @param fruits la nouvelle liste de fruits du panier
      * @brief Modificateur du premier attribut (nb d'oranges max dans le panier)
      */
-    public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
+    public void setFruits(HashMap<Fruit,Double> fruits) { //modificateur du premier attribut
         this.fruits = fruits;
     }
 
@@ -67,22 +70,13 @@ public class Panier extends Observable {
         return contenanceMax;
     }
 
-    /**
-     * @param i la nouvelle contenance maximale du panier
-     * @return boolean true si la contenance a pu etre modifiee, false sinon
-     * @brief Modificateur du second attribut
-     */
-    public Fruit getFruit(int i) {  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
-        return fruits.get(i);
-    }
-
-    /**
-     * @param i l'indice du fruit à modifier
-     * @param f le fruit à mettre à la place de celui à l'indice i
-     * @brief Modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-     */
-    public void setFruit(int i, Fruit f) {  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-        fruits.set(i, f);
+        /**
+         * @param i la nouvelle contenance maximale du panier
+         * @return boolean true si la contenance a pu etre modifiee, false sinon
+         * @brief Modificateur du second attribut
+         */
+    public Fruit getFruit(int i) {
+        return (Fruit) fruits.keySet().toArray()[i];
     }
 
     /**
@@ -101,6 +95,8 @@ public class Panier extends Observable {
         return fruits.size() == contenanceMax;
     }
 
+    public void ajout(Map.Entry<Fruit,Double> fruitQuantity) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+        if (fruits.containsKey(fruitQuantity.getKey())) {
 
     /**
      * @param o le fruit à ajouter au panier
@@ -112,7 +108,7 @@ public class Panier extends Observable {
             return;
         }
         if (fruits.size() < contenanceMax) {
-            fruits.add(o);
+            fruits.put(fruitQuantity.getKey(),fruitQuantity.getValue());
         } else {
             throw new PanierPleinException();
         }
@@ -151,12 +147,18 @@ public class Panier extends Observable {
     public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
 
         double prix = 0;
-        for (Fruit f : fruits) {
-            prix += f.getPrix();
+        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+            prix += fruitQuantity.getKey().getPrix() * fruitQuantity.getValue();
         }
         return prix;
     }
 
+    public void boycotteOrigine(Fruit.Pays origine) {  //supprime du panier tous les fruits provenant du pays origine
+        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+            if (fruitQuantity.getKey().getOrigine() == origine) {
+                fruits.remove(fruitQuantity.getKey());
+            }
+        }
     /**
      * @param origine le pays à boycotter dans le panier
      * @brief Retire du panier tous les fruits provenant du pays origine
@@ -179,9 +181,8 @@ public class Panier extends Observable {
             Panier p = (Panier) o;
             int compt = 0;
             if (p.fruits.size() == this.fruits.size()) {
-                for (Fruit f : p.fruits) {
-                    if (this.fruits.contains(f)) {
-                        System.out.println(f);
+                for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+                    if (p.fruits.containsKey(fruitQuantity.getKey())) {
                         compt++;
                     }
                 }

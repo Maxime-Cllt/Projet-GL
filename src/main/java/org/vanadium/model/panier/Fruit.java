@@ -10,21 +10,46 @@ import java.util.Map;
  * @author Rémy Barranco
  */
 public interface Fruit {
-    public boolean isSeedless();
 
-    public double getPrix();
+    /**
+     * @brief Map des images des fruits par classe de fruit
+     */
+    Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
+            Map.of(
+                    Orange.class, "orange.png"
+//                    Banane.class, "bananes.png",
+//                    Pomme.class, "pomme.png"
+            )
+    );
 
-    public Pays getOrigine();
+    /**
+     * @brief Map des images des fruits par type de fruit
+     */
+    Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
+            Map.of(
+                    Type.ORANGE, "orange.png",
+                    Type.BANANE, "bananes.png",
+                    Type.POMME, "pomme.png"
+            )
+    );
+    boolean isSeedless();
+
+    double getPrix();
+    void setPrix(double prix);
+
+    Pays getOrigine();
+    void setOrigine(Pays origine);
 
     @Override
-    public boolean equals(Object o);
+    boolean equals(Object o);
 
     @Override
-    public String toString();
+    String toString();
 
-    public String getImg();
+    String getImg();
 
-    public enum Pays {
+
+    enum Pays {
         FRANCE("France"),
         ESPAGNE("Espagne"),
         PORTUGAL("Portugal"),
@@ -48,8 +73,7 @@ public interface Fruit {
         }
     }
 
-
-    public enum Type {
+    enum Type {
         ORANGE("Orange"),
         BANANE("Banane"),
         POMME("Pomme"),
@@ -69,28 +93,4 @@ public interface Fruit {
             return name;
         }
     }
-
-
-    /**
-     * @brief Map des images des fruits par classe de fruit
-     */
-    static Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
-            Map.of(
-                    Orange.class, "orange.png",
-                    Banane.class, "bananes.png",
-                    Pomme.class, "pomme.png"
-            )
-    );
-
-    /**
-     * @brief Map des images des fruits par type de fruit
-     */
-    static Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
-            Map.of(
-                    Type.ORANGE, "orange.png",
-                    Type.BANANE, "bananes.png",
-                    Type.POMME, "pomme.png"
-            )
-    );
-
 }

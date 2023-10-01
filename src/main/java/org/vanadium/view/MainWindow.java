@@ -6,17 +6,18 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
+import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 import org.vanadium.model.panier.Panier;
 
-import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.util.*;
+import java.awt.*;
+import java.util.Observable;
 
 /**
-  * @author Maxime Colliat
+ * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
@@ -39,7 +40,9 @@ public class MainWindow extends JFrame implements VueG {
         add(inc, BorderLayout.EAST);
         add(dec, BorderLayout.WEST);
         add(affiche, BorderLayout.CENTER);
-        add(list, BorderLayout.SOUTH);
+        JScrollPane scrollPane = new JScrollPane();
+        add(scrollPane, BorderLayout.SOUTH);
+        scrollPane.setViewportView(list);
 
         inc.setName("Plus");
         dec.setName("Moins");
@@ -68,56 +71,43 @@ public class MainWindow extends JFrame implements VueG {
     @Override
     public void update(Observable m, Object panier) {     //This method is called whenever the observed object is changed
         affiche.setText(((Panier) panier).getTaillePanier() + "");
-        list.setListData(((Panier) panier).getFruits().toArray());
+        list.setListData(((Panier) panier).getFruits().keySet().toArray());
     }
 
-    /**
-     * @return the inc
-     */
+
     public JButton getInc() {
         return inc;
     }
 
-    /**
-     * @param inc the inc to set
-     */
+
     public void setInc(JButton inc) {
         this.inc = inc;
     }
 
-    /**
-     * @return the dec
-     */
+
     public JButton getDec() {
         return dec;
     }
 
-    /**
-     * @param dec the dec to set
-     */
+
     public void setDec(JButton dec) {
         this.dec = dec;
     }
 
-    /**
-     * @return the affiche
-     */
+
     public JLabel getAffiche() {
         return affiche;
     }
 
-    /**
-     * @param affiche the affiche to set
-     */
     public void setAffiche(JLabel affiche) {
         this.affiche = affiche;
     }
 
-    public void setList(JList list) {
-        this.list = list;
-    }
-
     public JList getList() {
         return list;
+    }
+
+    public void setList(JList list) {
+        this.list = list;
     }
 }
