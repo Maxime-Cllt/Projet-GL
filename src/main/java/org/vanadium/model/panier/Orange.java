@@ -1,5 +1,9 @@
 package org.vanadium.model.panier;
 
+import org.vanadium.model.Utils;
+
+import static org.vanadium.model.Utils.round;
+
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
@@ -56,7 +60,7 @@ public class Orange implements Fruit {
 
     @Override
     public String toString() {
-        return "Orange de " + origine.toString() + " a " + prix + " euros";
+        return "Orange de " + origine.toString() + " a " + round(prix,2) + " euros";
     }
 
     @Override

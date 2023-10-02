@@ -1,6 +1,8 @@
 package org.vanadium.model.panier;
 
 
+import static org.vanadium.model.Utils.round;
+
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
@@ -60,7 +62,7 @@ public class Pomme implements Fruit {
 
     @Override
     public String toString() {
-        return "Pomme de " + origine.toString() + " a " + prix + " euros";
+        return "Pomme de " + origine.toString() + " a " + round(prix,2) + " euros";
     }
 
     @Override
