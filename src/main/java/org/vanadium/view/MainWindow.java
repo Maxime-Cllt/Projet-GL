@@ -5,10 +5,10 @@
  */
 package org.vanadium.view;
 
-import org.vanadium.controler.ControleurBtn;
+import org.vanadium.controler.ControleurMainWindow;
+import org.vanadium.controler.ControllerPopMenuList;
 import org.vanadium.interfaces.VueG;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
@@ -22,8 +22,8 @@ import java.util.Observable;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class MainWindow extends JFrame implements VueG {
     private JButton inc;
@@ -54,7 +54,7 @@ public class MainWindow extends JFrame implements VueG {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void addControleur(ControleurBtn c) {
+    public void addControleur(ControleurMainWindow c) {
         getInc().addActionListener(c);
         getDec().addActionListener(c);
         new ListSelectionListener() {
@@ -77,7 +77,8 @@ public class MainWindow extends JFrame implements VueG {
                     Object o = list.getModel().getElementAt(index);
                     FruitItem f = (FruitItem) o;
                     if (evt.getClickCount() == 2) {
-                        MenuFruitList menu = new MenuFruitList(evt);
+                        MenuFruitList menu = new MenuFruitList();
+                        menu.addControleur(new ControllerPopMenuList(list,c.getModele()));
                         menu.show(evt.getComponent(), evt.getX(), evt.getY());
                     }
                 }

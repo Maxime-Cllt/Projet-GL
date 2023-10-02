@@ -1,8 +1,6 @@
-package org.vanadium.model.fruit;
+package org.vanadium.model.panier;
 
 import org.vanadium.interfaces.Fruit;
-
-import static org.vanadium.model.Utils.round;
 
 /**
  * @author Maxime Colliat
@@ -12,24 +10,24 @@ import static org.vanadium.model.Utils.round;
  * @author Julie PRIGENT
  */
 
-public class Orange implements Fruit {
+public class Inconnue implements Fruit {
     private double prix;
     private Pays origine;
 
     /**
-     * @brief Constructeur de la class Orange par défaut
+     * @brief Constructeur de la class Inconnue par défaut
      */
-    public Orange() {
-        this.prix = 0.5;
+    public Inconnue() {
+        this.prix = 0.0;
         this.origine = Pays.INCONNU;
     }
 
     /**
      * @param prix
      * @param origine
-     * @brief Constructeur de la class Orange avec paramètres prix et origine
+     * @brief Constructeur de la class Inconnue avec paramètres prix et origine
      */
-    public Orange(double prix, Pays origine) {
+    public Inconnue(double prix, Pays origine) {
         if (prix < 0)
             this.prix = -prix;  //une solution possible pour interdire les prix negatifs
         else
@@ -60,7 +58,7 @@ public class Orange implements Fruit {
 
     @Override
     public String toString() {
-        return "Orange de " + origine.toString() + " a " + round(prix, 2) + " euros";
+        return "Fruit inconnue de " + origine.toString() + " a " + prix + " euros";
     }
 
     @Override
@@ -69,24 +67,24 @@ public class Orange implements Fruit {
     }
 
     /**
-     * @param o Objet à comparer
-     * @return true si les oranges sont équivalentes, false sinon
-     * @brief Redéfinition de la méthode equals pour les oranges
+     * @param i Objet à comparer
+     * @return true si les Inconnues sont équivalentes, false sinon
+     * @brief Redéfinition de la méthode equals pour les Inconnues
      */
     @Override
-    public boolean equals(Object o) {  //predicat pour tester si 2 oranges sont equivalentes
-        if (o != null && getClass() == o.getClass()) {
-            Orange or = (Orange) o;
-            return (prix == or.prix && origine.equals(or.origine));
+    public boolean equals(Object i) {
+        if (i != null && getClass() == i.getClass()) {
+            Inconnue inconnue = (Inconnue) i;
+            return (prix == inconnue.prix && origine.equals(inconnue.origine));
         }
         return false;
     }
 
     /**
      * @return false
-     * @brief Redéfinition de la méthode isSeedless pour les oranges
+     * @brief Redéfinition de la méthode isSeedless pour les Inconnues
      */
-    public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
+    public boolean isSeedless() {
         return false;
     }
 }

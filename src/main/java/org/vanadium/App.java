@@ -5,27 +5,26 @@
  */
 package org.vanadium;
 
-import org.vanadium.controler.ControleurBtn;
+import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;
 import org.vanadium.view.VueConsole;
-import org.vanadium.interfaces.VueG;
 
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class App {
     private final VueG vueg;
-    private final ControleurBtn controleur;
+    private final ControleurMainWindow controleur;
 
     public App() throws PanierPleinException {
         vueg = new MainWindow();
-        controleur = new ControleurBtn();
+        controleur = new ControleurMainWindow();
         Panier modele = new Panier(100);
         VueConsole vuec = new VueConsole();
 

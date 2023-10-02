@@ -1,18 +1,22 @@
 package org.vanadium.view;
 
+import org.vanadium.controler.ControllerPopMenuList;
+import org.vanadium.model.panier.Panier;
+
 import javax.swing.*;
-import java.awt.event.MouseEvent;
 
 public class MenuFruitList extends JPopupMenu {
-    private JMenuItem deleteItem;
-    private JMenuItem modifyItem;
+    private final JMenuItem deleteItem;
+    private final JMenuItem modifyItem;
 
-    public MenuFruitList(MouseEvent e) {
+    private ControllerPopMenuList c;
+
+
+    public MenuFruitList() {
         deleteItem = new JMenuItem("Supprimer");
         modifyItem = new JMenuItem("Modifier");
         add(deleteItem);
         add(modifyItem);
-        addListeners();
     }
 
     public JMenuItem getDeleteItem() {
@@ -23,12 +27,9 @@ public class MenuFruitList extends JPopupMenu {
         return modifyItem;
     }
 
-    private void addListeners() {
-        deleteItem.addActionListener(e -> {
-
-        });
-        modifyItem.addActionListener(e -> {
-            // TODO
-        });
+    public void addControleur(ControllerPopMenuList c) {
+        this.c = c;
+        deleteItem.addActionListener(c);
+        modifyItem.addActionListener(c);
     }
 }

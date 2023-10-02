@@ -18,10 +18,10 @@ import java.util.ArrayList;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
-public class ControleurBtn implements ActionListener {
+public class ControleurMainWindow implements ActionListener {
     public ArrayList<Fruit> selectedFruits = new ArrayList<>();
     private Panier m;
 
@@ -49,5 +49,9 @@ public class ControleurBtn implements ActionListener {
 
     public void setModele(Panier panier) {
         this.m = panier;
+    }
+
+    public Panier getModele() {
+        return m;
     }
 }
