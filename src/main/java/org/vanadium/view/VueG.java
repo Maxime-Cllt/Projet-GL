@@ -16,6 +16,7 @@ import java.util.Observer;
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
+ * @author Julie Prigent
  */
 public interface VueG extends Observer {
     @Override

@@ -6,7 +6,7 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
-import org.vanadium.model.panier.Orange;
+import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
@@ -20,6 +20,7 @@ import java.util.Observable;
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
+ * @author Julie Prigent
  */
 public class MainWindow extends JFrame implements VueG {
     private JButton inc;
@@ -62,7 +63,7 @@ public class MainWindow extends JFrame implements VueG {
         };
         list.addListSelectionListener(ListSelectionListener -> {
             for (Object f : list.getSelectedValuesList()) {
-                c.selectedFruits.add((Orange) f);
+                c.selectedFruits.add((Fruit) f);
             }
         });
     }

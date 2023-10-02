@@ -9,6 +9,7 @@ import java.util.Observable;
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
+ * @author Julie Prigent
  */
 public class Panier extends Observable {
     private final int contenanceMax;

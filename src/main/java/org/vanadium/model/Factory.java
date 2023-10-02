@@ -5,6 +5,15 @@ import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 import org.vanadium.model.panier.Pomme;
 
+
+/**
+ * @author Maxime Colliat
+ * @author Yoan DUSOLEIL
+ * @author Rahman YILMAZ
+ * @author Rémy Barranco
+ * @author Julie Prigent
+ */
+
 public class Factory {
 
 
