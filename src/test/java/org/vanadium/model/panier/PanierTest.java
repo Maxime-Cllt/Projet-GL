@@ -1,6 +1,9 @@
 package org.vanadium.model.panier;
 
 import org.junit.jupiter.api.Test;
+import org.vanadium.model.fruit.Banane;
+import org.vanadium.model.fruit.Orange;
+import org.vanadium.model.fruit.Pomme;
 
 import java.util.AbstractMap;
 

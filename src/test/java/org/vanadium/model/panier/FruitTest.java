@@ -1,6 +1,10 @@
 package org.vanadium.model.panier;
 
 import org.junit.jupiter.api.Test;
+import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.fruit.Banane;
+import org.vanadium.model.fruit.Orange;
+import org.vanadium.model.fruit.Pomme;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
