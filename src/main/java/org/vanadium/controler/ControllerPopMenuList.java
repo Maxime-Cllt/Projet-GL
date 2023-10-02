@@ -27,22 +27,18 @@ public class ControllerPopMenuList implements ActionListener {
         FruitItem f_item = ((FruitItem) list.getSelectedValue());
         Fruit f = f_item.getFruit();
         switch (e.getActionCommand()) {
-            case "Supprimer":
-                m.retrait(f);
-                break;
-            case "Modifier":
+            case "Supprimer" -> m.retrait(f);
+            case "Modifier" -> {
                 ModifyFruitDialog dialog = new ModifyFruitDialog(f_item);
                 dialog.setVisible(true);
                 try {
                     m.retrait(dialog.getOldFruitItem().getFruit());
-                    m.modifierFruit(f_item.getFruit(), f_item.getQuantity());
+                    m.ajout(dialog.getNewFruitItem().getFruit(), dialog.getNewFruitItem().getQuantity());
                 } catch (PanierPleinException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
+            }
         }
-
-
     }
 
     public void setPanier(Panier m) {

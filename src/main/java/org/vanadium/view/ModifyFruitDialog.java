@@ -40,7 +40,7 @@ public class ModifyFruitDialog extends JDialog {
         _pays = new JComboBox<>(Fruit.Pays.values());
         _pays.setSelectedItem(_old_fruit.getFruit().getOrigine());
         _type = new JComboBox<>(Fruit.Type.values());
-        _type.setSelectedItem(_old_fruit.getFruit().getClass());
+        _type.setSelectedItem(Fruit.Type.getType(_old_fruit.getFruit()));
         _prix = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 100.0, 0.1));
         _prix.setValue(_old_fruit.getFruit().getPrix());
         _quantity = new JSpinner(new SpinnerNumberModel(1, 0.1, 10, 0.1));
@@ -122,6 +122,9 @@ public class ModifyFruitDialog extends JDialog {
      * @brief Méthode qui permet de récupérer le fruit créé
      */
     public FruitItem getNewFruitItem() {
+        if (_new_fruit == null) {
+            return _old_fruit;
+        }
         return _new_fruit;
     }
 

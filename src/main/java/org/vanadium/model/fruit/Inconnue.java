@@ -1,6 +1,8 @@
-package org.vanadium.model.panier;
+package org.vanadium.model.fruit;
 
 import org.vanadium.interfaces.Fruit;
+
+import static org.vanadium.model.Utils.round;
 
 /**
  * @author Maxime Colliat
@@ -58,7 +60,7 @@ public class Inconnue implements Fruit {
 
     @Override
     public String toString() {
-        return "Fruit inconnue de " + origine.toString() + " a " + prix + " euros";
+        return "Fruit inconnue de " + origine.toString() + " a " + round(prix, 2)  + " euros";
     }
 
     @Override

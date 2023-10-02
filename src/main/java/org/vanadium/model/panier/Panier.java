@@ -3,6 +3,7 @@ package org.vanadium.model.panier;
 import org.vanadium.interfaces.Fruit;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Observable;
 
@@ -115,6 +116,11 @@ public class Panier extends Observable {
         notifyObservers(this);
     }
 
+    public void ajout(Fruit f, Double quantity) throws PanierPleinException {
+        Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
+        ajout(fruitQuantity);
+    }
+
     /**
      * @throws PanierVideException
      * @brief Méthode qui permet de retirer un fruit du panier
@@ -160,13 +166,6 @@ public class Panier extends Observable {
                 fruits.remove(fruitQuantity.getKey());
             }
         }
-    }
-
-    public void modifierFruit(Fruit fruit, double quantite) throws PanierPleinException {
-        // remove old fruit
-        retrait(fruit);
-        // add new fruit
-        ajout(Map.entry(fruit, quantite));
     }
 
     public void notifier() {

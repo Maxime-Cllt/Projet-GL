@@ -6,6 +6,7 @@
 package org.vanadium;
 
 import org.vanadium.controler.ControleurMainWindow;
+import org.vanadium.interfaces.VueG;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;

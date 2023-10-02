@@ -4,7 +4,7 @@ import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.Banane;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
-import org.vanadium.model.panier.Inconnue;
+import org.vanadium.model.fruit.Inconnue;
 
 
 /**
