@@ -15,7 +15,7 @@
     </properties>
 
     <build>
-        <testSourceDirectory>src/test/java/org/vanadium</testSourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
 <!--        <sourceDirectory>src/main/java/org/vanadium</sourceDirectory>-->
         <plugins>
             <plugin>
