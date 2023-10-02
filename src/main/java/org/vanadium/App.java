@@ -17,6 +17,7 @@ import org.vanadium.view.VueG;
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
  * @author Rémy Barranco
+ * @author Julie Prigent
  */
 public class App {
     private final VueG vueg;
