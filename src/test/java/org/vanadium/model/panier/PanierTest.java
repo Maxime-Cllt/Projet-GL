@@ -82,15 +82,15 @@ class PanierTest {
         Orange orange = new Orange();
         orange.setPrix(0.5);
         panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
-        assertEquals(0.5, panier.getPrix());
+        assertEquals(0.5, panier.getPrixTotal());
         Banane banane = new Banane();
         banane.setPrix(1.0);
         panier.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
-        assertEquals(1.5, panier.getPrix());
+        assertEquals(1.5, panier.getPrixTotal());
         Pomme pomme = new Pomme();
         pomme.setPrix(2.0);
         panier.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
-        assertEquals(3.5, panier.getPrix());
+        assertEquals(3.5, panier.getPrixTotal());
     }
 
     @Test
