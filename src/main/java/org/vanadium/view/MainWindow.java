@@ -89,6 +89,7 @@ public class MainWindow extends JFrame implements VueG {
     @Override
     public void update(Observable m, Object panier) {     //This method is called whenever the observed object is changed
         prix_total.setText(((Panier) panier).getPrixTotal() + "€");
+        nb_fruits.setText(((Panier) panier).getFruits().size() + "");
         ArrayList<FruitItem> fruits = new ArrayList<>();
         for (Fruit f : ((Panier) panier).getFruits().keySet()) {
             fruits.add(new FruitItem(f, ((Panier) panier).getFruits().get(f)));
