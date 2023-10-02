@@ -18,8 +18,8 @@ import java.util.ArrayList;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class ControleurBtn implements ActionListener {
     public ArrayList<Fruit> selectedFruits = new ArrayList<>();

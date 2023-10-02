@@ -3,6 +3,7 @@ package org.vanadium.interfaces;
 import org.vanadium.model.fruit.Banane;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
+import org.vanadium.model.panier.Inconnue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +12,8 @@ import java.util.Map;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public interface Fruit {
 
@@ -23,7 +24,8 @@ public interface Fruit {
             Map.of(
                     Orange.class, "orange.png",
                     Banane.class, "bananes.png",
-                    Pomme.class, "pomme.png"
+                    Pomme.class, "pomme.png",
+                    Inconnue.class, "panier.png"
             )
     );
 
@@ -34,7 +36,8 @@ public interface Fruit {
             Map.of(
                     Type.ORANGE, "orange.png",
                     Type.BANANE, "bananes.png",
-                    Type.POMME, "pomme.png"
+                    Type.POMME, "pomme.png",
+                    Type.INCONNU, "panier.png"
             )
     );
 
@@ -64,7 +67,15 @@ public interface Fruit {
         MAROC("Maroc"),
         ITALIE("Italie"),
         USA("USA"),
-        INCONNU("Inconnu");
+        INCONNU("Inconnu"),
+        ALLEMAGNE("Allemagne"),
+        ROYAUME_UNI("Royaume-Uni"),
+        CANADA("Canada"),
+        AUSTRALIE("Australie"),
+        JAPON("Japon"),
+        CHINE("Chine"),
+        RUSSIE("Russie"),
+        BRESIL("Brésil");
 
         private String name = "";
 

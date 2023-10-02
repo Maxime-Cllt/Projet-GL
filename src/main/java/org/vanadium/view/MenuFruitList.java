@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 
 public class MenuFruitList extends JPopupMenu {
-    private JMenuItem deleteItem;
-    private JMenuItem modifyItem;
+    private final JMenuItem deleteItem;
+    private final JMenuItem modifyItem;
 
     public MenuFruitList(MouseEvent e) {
         deleteItem = new JMenuItem("Supprimer");
