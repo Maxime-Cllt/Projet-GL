@@ -1,9 +1,9 @@
-package org.vanadium.model;
+package org.vanadium.factories;
 
-import org.vanadium.model.panier.Banane;
-import org.vanadium.model.panier.Fruit;
-import org.vanadium.model.panier.Orange;
-import org.vanadium.model.panier.Pomme;
+import org.vanadium.model.fruit.Banane;
+import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.fruit.Orange;
+import org.vanadium.model.fruit.Pomme;
 
 
 /**

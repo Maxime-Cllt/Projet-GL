@@ -1,6 +1,6 @@
-package org.vanadium.model.panier;
+package org.vanadium.model.fruit;
 
-import org.vanadium.model.Utils;
+import org.vanadium.interfaces.Fruit;
 
 import static org.vanadium.model.Utils.round;
 

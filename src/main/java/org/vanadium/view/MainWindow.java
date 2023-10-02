@@ -6,15 +6,15 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
-import org.vanadium.model.FruitItem;
-import org.vanadium.model.panier.Fruit;
+import org.vanadium.interfaces.VueG;
+import org.vanadium.model.fruit.FruitItem;
+import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Observable;
 

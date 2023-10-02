@@ -1,6 +1,6 @@
-package org.vanadium.model;
+package org.vanadium.model.fruit;
 
-import org.vanadium.model.panier.Fruit;
+import org.vanadium.interfaces.Fruit;
 
 public class FruitItem {
     private Fruit fruit;
