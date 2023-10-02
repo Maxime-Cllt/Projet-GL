@@ -16,9 +16,9 @@ public interface Fruit {
      */
     Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
             Map.of(
-                    Orange.class, "orange.png"
-//                    Banane.class, "bananes.png",
-//                    Pomme.class, "pomme.png"
+                    Orange.class, "orange.png",
+                    Banane.class, "bananes.png",
+                    Pomme.class, "pomme.png"
             )
     );
 
@@ -32,12 +32,15 @@ public interface Fruit {
                     Type.POMME, "pomme.png"
             )
     );
+
     boolean isSeedless();
 
     double getPrix();
+
     void setPrix(double prix);
 
     Pays getOrigine();
+
     void setOrigine(Pays origine);
 
     @Override
@@ -89,6 +92,10 @@ public interface Fruit {
             this.name = name;
         }
 
+        /**
+         * @return
+         * @brief Méthode qui permet de retourner le nom du type de fruit
+         */
         public String toString() {
             return name;
         }

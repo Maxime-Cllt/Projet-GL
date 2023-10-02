@@ -2,15 +2,19 @@ package org.vanadium.model.panier;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.AbstractMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PanierTest {
 
     @Test
     void getTaillePanier() throws PanierPleinException, PanierVideException {
-        Panier panier = new Panier(5);
+        Panier panier = new Panier(10);
         assertEquals(0, panier.getTaillePanier());
-        panier.ajout(new Orange());
+        Orange orange = new Orange();
+        panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(1, panier.getTaillePanier());
         panier.retrait();
         assertEquals(0, panier.getTaillePanier());
@@ -20,10 +24,12 @@ class PanierTest {
     void estVide() throws PanierPleinException, PanierVideException {
         Panier panier = new Panier(5);
         assertTrue(panier.estVide());
-        panier.ajout(new Orange());
+        Orange orange = new Orange();
+        panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertFalse(panier.estVide());
         panier.retrait();
         assertTrue(panier.estVide());
+
     }
 
 //    @Test
@@ -41,17 +47,23 @@ class PanierTest {
 //    }
 
     @Test
-    void ajout() throws PanierPleinException, PanierVideException {
-        Panier panier = new Panier(10);
-        panier.ajout(new Orange());
-        assertEquals(1, panier.getTaillePanier());
+    void ajout() {
+        try {
+            Panier panier = new Panier(10);
+            Orange orange = new Orange();
+            panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+            assertEquals(1, panier.getTaillePanier());
+        } catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
     void retrait() throws PanierPleinException {
         Panier panier = new Panier(10);
         Orange orange = new Orange();
-        panier.ajout(orange);
+        panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         panier.retrait(orange);
         assertEquals(0, panier.getTaillePanier());
     }
@@ -59,8 +71,7 @@ class PanierTest {
     @Test
     void testRetrait() throws PanierVideException, PanierPleinException {
         Panier panier = new Panier(10);
-        Orange orange = new Orange();
-        panier.ajout(orange);
+        panier.ajout((Map.Entry<Fruit, Double>) new Orange());
         panier.retrait();
         assertEquals(0, panier.getTaillePanier());
 
@@ -70,7 +81,7 @@ class PanierTest {
     void getPrix() throws PanierPleinException {
         Panier panier = new Panier(10);
         Orange orange = new Orange();
-        panier.ajout(orange);
+        panier.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(0.5, panier.getPrix());
     }
 

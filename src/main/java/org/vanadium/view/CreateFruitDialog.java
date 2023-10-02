@@ -1,5 +1,6 @@
 package org.vanadium.view;
 
+import org.vanadium.model.Factory;
 import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 
@@ -8,8 +9,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.Map;
-
-import org.vanadium.model.Factory;
 
 public class CreateFruitDialog extends JDialog {
     private Fruit _fruit;
@@ -110,7 +109,12 @@ public class CreateFruitDialog extends JDialog {
         });
 
     }
-    public Map.Entry<Fruit,Double> getFruit() {
+
+    /**
+     * @return Map.Entry<Fruit, Double>
+     * @brief Méthode qui permet de récupérer le fruit créé
+     */
+    public Map.Entry<Fruit, Double> getFruit() {
         return Map.entry(_fruit, (double) _quantity.getValue());
     }
 }

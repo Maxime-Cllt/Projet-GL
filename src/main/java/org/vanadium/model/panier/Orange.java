@@ -11,11 +11,6 @@ public class Orange implements Fruit {
     private double prix;
     private Pays origine;
 
-    public static Pays randomPays() {
-        int pick = new java.util.Random().nextInt(Pays.values().length);
-        return Pays.values()[pick];
-    }
-
     /**
      * @brief Constructeur de la class Orange par défaut
      */
@@ -35,6 +30,11 @@ public class Orange implements Fruit {
         else
             this.prix = prix;
         this.origine = origine;
+    }
+
+    public static Pays randomPays() {
+        int pick = new java.util.Random().nextInt(Pays.values().length);
+        return Pays.values()[pick];
     }
 
     public double getPrix() {
@@ -78,8 +78,8 @@ public class Orange implements Fruit {
     }
 
     /**
-     * @brief Redéfinition de la méthode isSeedless pour les oranges
      * @return false
+     * @brief Redéfinition de la méthode isSeedless pour les oranges
      */
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;

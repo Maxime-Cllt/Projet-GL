@@ -12,10 +12,6 @@ public class Banane implements Fruit {
     private double prix; //prix en euros
     private Pays origine; //pays d'origine
 
-    public static Pays randomPays() {
-        return Pays.values()[new java.util.Random().nextInt(Pays.values().length)];
-    }
-
     /**
      * @brief Constructeur de la class Banane par défaut
      */
@@ -37,6 +33,9 @@ public class Banane implements Fruit {
         this.origine = origine;
     }
 
+    public static Pays randomPays() {
+        return Pays.values()[new java.util.Random().nextInt(Pays.values().length)];
+    }
 
     /**
      * GETTERS AND SETTERS
@@ -88,11 +87,5 @@ public class Banane implements Fruit {
      */
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
         return false;
-    }
-
-
-    public static void main(String[] args) {
-        Banane banane = new Banane();
-        System.out.println(banane);
     }
 }
