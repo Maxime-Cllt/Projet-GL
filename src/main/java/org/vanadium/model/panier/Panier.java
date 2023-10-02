@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 
+import static org.vanadium.model.Utils.round;
+
+
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
@@ -118,7 +121,7 @@ public class Panier extends Observable {
         if (fruits.isEmpty()) {
             throw new PanierVideException();
         }
-        fruits.remove(fruits.size() - 1);
+        fruits.remove(fruits.keySet().toArray()[fruits.size() - 1]);
         setChanged();
         notifyObservers(this);
     }
@@ -137,12 +140,12 @@ public class Panier extends Observable {
      * @return double
      * @brief Méthode qui permet de calculer le prix du panier
      */
-    public double getPrix() {
+    public double getPrixTotal() {
         double prix = 0;
         for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
             prix += fruitQuantity.getKey().getPrix() * fruitQuantity.getValue();
         }
-        return prix;
+        return round(prix,2);
     }
 
     /**

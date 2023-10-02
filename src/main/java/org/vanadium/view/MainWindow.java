@@ -6,6 +6,7 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
+import org.vanadium.model.FruitItem;
 import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Panier;
 
@@ -13,6 +14,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -25,7 +28,8 @@ import java.util.Observable;
 public class MainWindow extends JFrame implements VueG {
     private JButton inc;
     private JButton dec;
-    private JLabel affiche;
+    private JLabel nb_fruits;
+    private JLabel prix_total;
 
     private JList list;
 
@@ -36,17 +40,15 @@ public class MainWindow extends JFrame implements VueG {
         inc = new JButton("+");
         dec = new JButton("-");
         list = new JList();
-        affiche = new JLabel("0", JLabel.CENTER);
         add(inc, BorderLayout.EAST);
         add(dec, BorderLayout.WEST);
-        add(affiche, BorderLayout.CENTER);
         JScrollPane scrollPane = new JScrollPane();
         add(scrollPane, BorderLayout.SOUTH);
         scrollPane.setViewportView(list);
+        createCentralPan();
 
         inc.setName("Plus");
         dec.setName("Moins");
-        affiche.setName("Affichage");
         this.pack();
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,20 +60,40 @@ public class MainWindow extends JFrame implements VueG {
         new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                System.out.println("Selected fruit: " + list.getSelectedValue());
             }
         };
         list.addListSelectionListener(ListSelectionListener -> {
             for (Object f : list.getSelectedValuesList()) {
-                c.selectedFruits.add((Fruit) f);
+                c.selectedFruits.add(((FruitItem) f).getFruit());
             }
         });
+
+
+        list.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int index = list.locationToIndex(evt.getPoint());
+                if (index >= 0) {
+                    Object o = list.getModel().getElementAt(index);
+                    FruitItem f = (FruitItem) o;
+                    if (evt.getClickCount() == 2) {
+                        MenuFruitList menu = new MenuFruitList(evt);
+                        menu.show(evt.getComponent(), evt.getX(), evt.getY());
+                    }
+                }
+            }
+        });
+
     }
 
     @Override
     public void update(Observable m, Object panier) {     //This method is called whenever the observed object is changed
-        affiche.setText(((Panier) panier).getTaillePanier() + "");
-        list.setListData(((Panier) panier).getFruits().keySet().toArray());
+        prix_total.setText(((Panier) panier).getPrixTotal() + "€");
+        ArrayList<FruitItem> fruits = new ArrayList<>();
+        for (Fruit f : ((Panier) panier).getFruits().keySet()) {
+            fruits.add(new FruitItem(f, ((Panier) panier).getFruits().get(f)));
+        }
+        list.setListData(fruits.toArray());
     }
 
 
@@ -95,19 +117,28 @@ public class MainWindow extends JFrame implements VueG {
     }
 
 
-    public JLabel getAffiche() {
-        return affiche;
-    }
-
-    public void setAffiche(JLabel affiche) {
-        this.affiche = affiche;
-    }
-
-    public JList getList() {
-        return list;
-    }
-
     public void setList(JList list) {
         this.list = list;
     }
+
+    private void createCentralPan() {
+        JPanel pan = new JPanel();
+        pan.setLayout(new GridLayout(2, 2));
+        pan.setBorder(BorderFactory.createTitledBorder("Panier"));
+        prix_total = new JLabel("0€");
+        nb_fruits = new JLabel("0");
+
+        JLabel prix_total_label = new JLabel("Prix total : ");
+
+        pan.add(prix_total_label);
+        pan.add(prix_total);
+
+        JLabel nb_fruits_label = new JLabel("Nombre de fruits : ");
+
+        pan.add(nb_fruits_label);
+        pan.add(nb_fruits);
+
+        add(pan, BorderLayout.CENTER);
+    }
+
 }
