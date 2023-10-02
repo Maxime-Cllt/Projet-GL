@@ -52,4 +52,5 @@ La documentation du projet est disponible à la racine du projet, dans le dossie
     <li><a href="https://github.com/Yaon-C2H8N2">Yoan DUSOLEIL</a></li>
     <li><a href="https://github.com/Phaired">Rémy BARRANCO</a></li>
     <li><a href="https://github.com/Sudo-Rahman">Rahman YILMAZ</a></li>
+    <li><a href="https://github.com/JuliePrigent">Julie PRIGENT</a></li>
 </ul>
