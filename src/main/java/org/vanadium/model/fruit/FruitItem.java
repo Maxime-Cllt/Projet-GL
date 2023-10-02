@@ -20,8 +20,23 @@ public class FruitItem {
         return fruit;
     }
 
+    public void setFruit(Fruit fruit) {
+        this.fruit = fruit;
+    }
+
     public double getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    private double quantity;
+
+    public FruitItem(Fruit fruit, double quantity) {
+        this.fruit = fruit;
+        this.quantity = quantity;
     }
 
     public String toString() {

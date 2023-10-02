@@ -162,6 +162,18 @@ public class Panier extends Observable {
         }
     }
 
+    public void modifierFruit(Fruit fruit, double quantite) throws PanierPleinException {
+        // remove old fruit
+        retrait(fruit);
+        // add new fruit
+        ajout(Map.entry(fruit, quantite));
+    }
+
+    public void notifier() {
+        setChanged();
+        notifyObservers(this);
+    }
+
     /**
      * @param o
      * @return boolean

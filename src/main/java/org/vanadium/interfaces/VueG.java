@@ -1,6 +1,6 @@
 package org.vanadium.interfaces;
 
-import org.vanadium.controler.ControleurBtn;
+import org.vanadium.controler.ControleurMainWindow;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -22,6 +22,6 @@ public interface VueG extends Observer {
     @Override
     void update(Observable m, Object o);
 
-    void addControleur(ControleurBtn c);
+    void addControleur(ControleurMainWindow c);
 
 }
