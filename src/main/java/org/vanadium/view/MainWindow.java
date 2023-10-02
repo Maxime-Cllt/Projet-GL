@@ -6,7 +6,6 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
-import org.vanadium.model.panier.Fruit;
 import org.vanadium.model.panier.Orange;
 import org.vanadium.model.panier.Panier;
 

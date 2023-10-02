@@ -13,6 +13,7 @@ import java.awt.*;
  * @author Rahman YILMAZ
  * @author Rémy Barranco
  */
+
 public class TestUtils {
 
     public static Component getChildNamed(Component parent, String name) {

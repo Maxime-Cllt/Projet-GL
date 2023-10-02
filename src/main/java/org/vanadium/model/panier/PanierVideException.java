@@ -7,6 +7,10 @@ package org.vanadium.model.panier;
  * @author Rémy Barranco
  */
 public class PanierVideException extends Exception {
+
+    /**
+     * @brief Constructeur de l'exception PanierVideException sans paramètres
+     */
     public PanierVideException() {
         super("Suppression impossible car le panier est vide !");
     }

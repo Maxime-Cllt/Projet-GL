@@ -11,52 +11,97 @@ import java.util.Observable;
  * @author Rémy Barranco
  */
 public class Panier extends Observable {
-    private HashMap<Fruit,Double> fruits;
     private final int contenanceMax;
+    private HashMap<Fruit, Double> fruits;
 
+    /**
+     * @brief Constructeur de la classe Panier qui permet d'initialiser les attributs de la classe Panier
+     */
     public Panier(int contenanceMax) {
         fruits = new HashMap<>();
         this.contenanceMax = contenanceMax;
     }
 
+    /**
+     * @return String
+     * @brief Méthode toString de la classe Panier qui permet d'afficher le contenu du panier
+     */
     @Override
-    public String toString() {return "";}
+    public String toString() {
+        return "Panier{" +
+                "fruits=" + fruits +
+                ", contenanceMax=" + contenanceMax +
+                '}';
+    }
 
-    //groupe 2
-    public HashMap<Fruit,Double> getFruits() {  //accesseur du premier attribut
+    /**
+     * @return HashMap<Fruit, Double>
+     * @brief Méthode qui permet de récupérer les fruits du panier
+     */
+    public HashMap<Fruit, Double> getFruits() {
         return fruits;
     }
 
-    public void setFruits(HashMap<Fruit,Double> fruits) { //modificateur du premier attribut
+    /**
+     * @param fruits
+     * @brief Méthode qui permet de modifier les fruits du panier
+     */
+    public void setFruits(HashMap<Fruit, Double> fruits) {
         this.fruits = fruits;
     }
 
-    public int getTaillePanier() {  //accesseur retournant la taille allouee pour l'attibut fruits
+    /**
+     * @return int
+     * @brief Méthode qui permet de récupérer la taille du panier
+     */
+    public int getTaillePanier() {
         return fruits.size();
     }
 
-    public int getContenanceMax() {  //accesseur du second attribut
+    /**
+     * @return int
+     * @brief Méthode qui permet de récupérer la contenance maximale du panier
+     */
+    public int getContenanceMax() {
         return contenanceMax;
     }
 
+    /**
+     * @param i
+     * @return Fruit
+     * @brief Méthode qui permet de récupérer un fruit du panier
+     */
     public Fruit getFruit(int i) {
         return (Fruit) fruits.keySet().toArray()[i];
     }
 
-    public boolean estVide() {  //predicat indiquant que le panier est vide
+    /**
+     * @return boolean
+     * @brief Méthode qui permet de savoir si le panier est vide
+     */
+    public boolean estVide() {
         return fruits.isEmpty();
     }
 
-    public boolean estPlein() {  //predicat indiquant que le panier est plein
+    /**
+     * @return boolean
+     * @brief Méthode qui permet de savoir si le panier est plein
+     */
+    public boolean estPlein() {
         return fruits.size() == contenanceMax;
     }
 
-    public void ajout(Map.Entry<Fruit,Double> fruitQuantity) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+    /**
+     * @param fruitQuantity
+     * @throws PanierPleinException
+     * @brief Méthode qui permet d'ajouter un fruit dans le panier
+     */
+    public void ajout(Map.Entry<Fruit, Double> fruitQuantity) throws PanierPleinException {
         if (fruits.containsKey(fruitQuantity.getKey())) {
             return;
         }
         if (fruits.size() < contenanceMax) {
-            fruits.put(fruitQuantity.getKey(),fruitQuantity.getValue());
+            fruits.put(fruitQuantity.getKey(), fruitQuantity.getValue());
         } else {
             throw new PanierPleinException();
         }
@@ -64,8 +109,12 @@ public class Panier extends Observable {
         notifyObservers(this);
     }
 
-    public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
-        if (fruits.size() == 0) {
+    /**
+     * @throws PanierVideException
+     * @brief Méthode qui permet de retirer un fruit du panier
+     */
+    public void retrait() throws PanierVideException {
+        if (fruits.isEmpty()) {
             throw new PanierVideException();
         }
         fruits.remove(fruits.size() - 1);
@@ -73,36 +122,52 @@ public class Panier extends Observable {
         notifyObservers(this);
     }
 
-    public void retrait(Fruit o) { //retire le fruit o du panier s'il s'y trouve (on ne considere pas qu'il peut y en avoir plusieurs fois le meme fruit dans le panier)
+    /**
+     * @param o
+     * @brief Méthode qui permet de retirer un fruit du panier
+     */
+    public void retrait(Fruit o) {
         fruits.remove(o);
         setChanged();
         notifyObservers(this);
     }
 
-    public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
-
+    /**
+     * @return double
+     * @brief Méthode qui permet de calculer le prix du panier
+     */
+    public double getPrix() {
         double prix = 0;
-        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+        for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
             prix += fruitQuantity.getKey().getPrix() * fruitQuantity.getValue();
         }
         return prix;
     }
 
-    public void boycotteOrigine(Fruit.Pays origine) {  //supprime du panier tous les fruits provenant du pays origine
-        for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+    /**
+     * @param origine
+     * @brief Méthode qui permet de boycotter un fruit
+     */
+    public void boycotteOrigine(Fruit.Pays origine) {
+        for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
             if (fruitQuantity.getKey().getOrigine() == origine) {
                 fruits.remove(fruitQuantity.getKey());
             }
         }
     }
 
+    /**
+     * @param o
+     * @return boolean
+     * @brief Méthode qui permet de comparer deux paniers
+     */
     @Override
-    public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
+    public boolean equals(Object o) {
         if (o != null && getClass() == o.getClass()) {
             Panier p = (Panier) o;
             int compt = 0;
             if (p.fruits.size() == this.fruits.size()) {
-                for(Map.Entry<Fruit,Double> fruitQuantity : fruits.entrySet()) {
+                for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
                     if (p.fruits.containsKey(fruitQuantity.getKey())) {
                         compt++;
                     }

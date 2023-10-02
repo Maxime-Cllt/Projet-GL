@@ -10,13 +10,21 @@ import java.util.Map;
  * @author Rémy Barranco
  */
 public interface Fruit {
+
+    /**
+     * @brief Map des images des fruits par classe de fruit
+     */
     Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
             Map.of(
-                    Orange.class, "orange.png"
-//                    Banane.class, "bananes.png",
-//                    Pomme.class, "pomme.png"
+                    Orange.class, "orange.png",
+                    Banane.class, "bananes.png",
+                    Pomme.class, "pomme.png"
             )
     );
+
+    /**
+     * @brief Map des images des fruits par type de fruit
+     */
     Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
             Map.of(
                     Type.ORANGE, "orange.png",
@@ -28,9 +36,11 @@ public interface Fruit {
     boolean isSeedless();
 
     double getPrix();
+
     void setPrix(double prix);
 
     Pays getOrigine();
+
     void setOrigine(Pays origine);
 
     @Override
@@ -53,7 +63,10 @@ public interface Fruit {
 
         private String name = "";
 
-        //Constructeur
+        /**
+         * @param name
+         * @brief Constructeur de l'enum Pays avec paramètre name du pays en question en String (ex: "France")
+         */
         Pays(String name) {
             this.name = name;
         }
@@ -71,11 +84,18 @@ public interface Fruit {
 
         private String name = "";
 
-        //Constructeur
+        /**
+         * @param name nom du type de fruit
+         * @brief Constructeur de l'enum Type de fruit avec paramètre name
+         */
         Type(String name) {
             this.name = name;
         }
 
+        /**
+         * @return
+         * @brief Méthode qui permet de retourner le nom du type de fruit
+         */
         public String toString() {
             return name;
         }
