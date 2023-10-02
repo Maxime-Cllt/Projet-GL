@@ -13,8 +13,8 @@ import static org.vanadium.model.Utils.round;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class Panier extends Observable {
     private final int contenanceMax;
@@ -147,7 +147,7 @@ public class Panier extends Observable {
         for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
             prix += fruitQuantity.getKey().getPrix() * fruitQuantity.getValue();
         }
-        return round(prix,2);
+        return round(prix, 2);
     }
 
     /**

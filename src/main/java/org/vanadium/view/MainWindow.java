@@ -6,9 +6,9 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControleurBtn;
+import org.vanadium.interfaces.Fruit;
 import org.vanadium.interfaces.VueG;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
@@ -22,8 +22,8 @@ import java.util.Observable;
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class MainWindow extends JFrame implements VueG {
     private JButton inc;

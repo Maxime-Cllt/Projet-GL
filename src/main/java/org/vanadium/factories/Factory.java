@@ -1,17 +1,18 @@
 package org.vanadium.factories;
 
-import org.vanadium.model.fruit.Banane;
 import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.fruit.Banane;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
+import org.vanadium.model.panier.Inconnue;
 
 
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 
 public class Factory {
@@ -28,7 +29,8 @@ public class Factory {
             case ORANGE -> new Orange();
             case BANANE -> new Banane();
             case POMME -> new Pomme();
-            default -> null;
+            case INCONNU -> new Inconnue();
+            default -> new Inconnue();
         };
 
     }

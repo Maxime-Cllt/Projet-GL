@@ -1,4 +1,4 @@
-package org.vanadium.model.panier;
+package model.panier;
 
 import org.junit.jupiter.api.Test;
 import org.vanadium.interfaces.Fruit;
