@@ -3,7 +3,7 @@ package org.vanadium.interfaces;
 import org.vanadium.model.fruit.Banane;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
-import org.vanadium.model.panier.Inconnue;
+import org.vanadium.model.fruit.Inconnue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -99,6 +99,15 @@ public interface Fruit {
         INCONNU("Inconnu");
 
         private String name = "";
+
+        public static Type getType(Fruit f) {
+            return switch (f.getClass().getSimpleName()) {
+                case "Orange" -> Type.ORANGE;
+                case "Banane" -> Type.BANANE;
+                case "Pomme" -> Type.POMME;
+                default -> Type.INCONNU;
+            };
+        }
 
         /**
          * @param name nom du type de fruit

@@ -3,8 +3,8 @@ package org.vanadium.model.fruit;
 import org.vanadium.interfaces.Fruit;
 
 public class FruitItem {
-    private final Fruit fruit;
-    private final double quantity;
+    private Fruit fruit;
+    private double quantity;
 
     /**
      * @param fruit
@@ -20,8 +20,16 @@ public class FruitItem {
         return fruit;
     }
 
+    public void setFruit(Fruit fruit) {
+        this.fruit = fruit;
+    }
+
     public double getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 
     public String toString() {
