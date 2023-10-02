@@ -6,18 +6,18 @@
 package org.vanadium;
 
 import org.vanadium.controler.ControleurBtn;
+import org.vanadium.interfaces.VueG;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;
 import org.vanadium.view.VueConsole;
-import org.vanadium.interfaces.VueG;
 
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
  * @author Rahman YILMAZ
- * @author Rémy Barranco
- * @author Julie Prigent
+ * @author Rémy BARRANCO
+ * @author Julie PRIGENT
  */
 public class App {
     private final VueG vueg;
