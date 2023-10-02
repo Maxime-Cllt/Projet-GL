@@ -5,7 +5,7 @@
  */
 package org.vanadium.controler;
 
-import org.vanadium.model.panier.Fruit;
+import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.view.CreateFruitDialog;
 

@@ -1,4 +1,7 @@
-package org.vanadium.model.panier;
+package org.vanadium.model.fruit;
+
+
+import org.vanadium.interfaces.Fruit;
 
 import static org.vanadium.model.Utils.round;
 
@@ -10,15 +13,14 @@ import static org.vanadium.model.Utils.round;
  * @author Julie Prigent
  */
 
-
-public class Banane implements Fruit {
+public class Pomme implements Fruit {
     private double prix; //prix en euros
     private Pays origine; //pays d'origine
 
     /**
      * @brief Constructeur de la class Banane par défaut
      */
-    public Banane() {
+    public Pomme() {
         this.prix = 0.5;
         this.origine = Pays.INCONNU;
     }
@@ -28,7 +30,7 @@ public class Banane implements Fruit {
      * @param origine origine de la banane
      * @brief Constructeur de la class Banane
      */
-    public Banane(double prix, Pays origine) {
+    public Pomme(double prix, Pays origine) {
         if (prix < 0)
             this.prix = -prix;
         else
@@ -62,7 +64,7 @@ public class Banane implements Fruit {
 
     @Override
     public String toString() {
-        return "Banane de " + origine.toString() + " a " + round(prix, 2) + " euros";
+        return "Pomme de " + origine.toString() + " a " + round(prix,2) + " euros";
     }
 
     @Override
@@ -71,15 +73,15 @@ public class Banane implements Fruit {
     }
 
     /**
-     * @param b Banane à comparer
+     * @param p Banane à comparer
      * @return true si les deux bananes sont identiques et false si elles sont différentes
      * @brief Compare deux bananes entre elles et retourne true si elles sont identiques et false si elles sont différentes
      */
     @Override
-    public boolean equals(Object b) {
-        if (b != null && getClass() == b.getClass()) {
-            Banane banane = (Banane) b;
-            return (prix == banane.getPrix() && origine.equals(banane.getOrigine()));
+    public boolean equals(Object p) {
+        if (p != null && getClass() == p.getClass()) {
+            Pomme pomme = (Pomme) p;
+            return (prix == pomme.getPrix() && origine.equals(pomme.getOrigine()));
         }
         return false;
     }
@@ -92,3 +94,4 @@ public class Banane implements Fruit {
         return false;
     }
 }
+

@@ -10,7 +10,7 @@ import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;
 import org.vanadium.view.VueConsole;
-import org.vanadium.view.VueG;
+import org.vanadium.interfaces.VueG;
 
 /**
  * @author Maxime Colliat

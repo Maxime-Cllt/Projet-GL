@@ -1,5 +1,7 @@
 package org.vanadium.model.panier;
 
+import org.vanadium.interfaces.Fruit;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;

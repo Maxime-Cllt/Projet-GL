@@ -1,8 +1,8 @@
 package org.vanadium.view;
 
-import org.vanadium.model.Factory;
-import org.vanadium.model.panier.Fruit;
-import org.vanadium.model.panier.Orange;
+import org.vanadium.factories.Factory;
+import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.fruit.Orange;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
