@@ -1,4 +1,4 @@
-package org.vanadium.view;
+package org.vanadium.interfaces;
 
 import org.vanadium.controler.ControleurBtn;
 

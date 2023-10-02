@@ -1,4 +1,8 @@
-package org.vanadium.model.panier;
+package org.vanadium.interfaces;
+
+import org.vanadium.model.fruit.Banane;
+import org.vanadium.model.fruit.Orange;
+import org.vanadium.model.fruit.Pomme;
 
 import java.util.HashMap;
 import java.util.Map;
