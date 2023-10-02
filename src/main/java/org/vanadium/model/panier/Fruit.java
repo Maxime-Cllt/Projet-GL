@@ -1,5 +1,8 @@
 package org.vanadium.model.panier;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Maxime Colliat
  * @author Yoan DUSOLEIL
@@ -7,19 +10,49 @@ package org.vanadium.model.panier;
  * @author Rémy Barranco
  */
 public interface Fruit {
-    public boolean isSeedless();
 
-    public double getPrix();
+    /**
+     * @brief Map des images des fruits par classe de fruit
+     */
+    Map<Class<? extends Fruit>, String> imgClass = new HashMap<>(
+            Map.of(
+                    Orange.class, "orange.png",
+                    Banane.class, "bananes.png",
+                    Pomme.class, "pomme.png"
+            )
+    );
 
-    public Pays getOrigine();
+    /**
+     * @brief Map des images des fruits par type de fruit
+     */
+    Map<Enum<? extends Fruit.Type>, String> imgType = new HashMap<>(
+            Map.of(
+                    Type.ORANGE, "orange.png",
+                    Type.BANANE, "bananes.png",
+                    Type.POMME, "pomme.png"
+            )
+    );
+
+    boolean isSeedless();
+
+    double getPrix();
+
+    void setPrix(double prix);
+
+    Pays getOrigine();
+
+    void setOrigine(Pays origine);
 
     @Override
-    public boolean equals(Object o);
+    boolean equals(Object o);
 
     @Override
-    public String toString();
+    String toString();
 
-    public enum Pays {
+    String getImg();
+
+
+    enum Pays {
         FRANCE("France"),
         ESPAGNE("Espagne"),
         PORTUGAL("Portugal"),
@@ -30,11 +63,39 @@ public interface Fruit {
 
         private String name = "";
 
-        //Constructeur
+        /**
+         * @param name
+         * @brief Constructeur de l'enum Pays avec paramètre name du pays en question en String (ex: "France")
+         */
         Pays(String name) {
             this.name = name;
         }
 
+        public String toString() {
+            return name;
+        }
+    }
+
+    enum Type {
+        ORANGE("Orange"),
+        BANANE("Banane"),
+        POMME("Pomme"),
+        INCONNU("Inconnu");
+
+        private String name = "";
+
+        /**
+         * @param name nom du type de fruit
+         * @brief Constructeur de l'enum Type de fruit avec paramètre name
+         */
+        Type(String name) {
+            this.name = name;
+        }
+
+        /**
+         * @return
+         * @brief Méthode qui permet de retourner le nom du type de fruit
+         */
         public String toString() {
             return name;
         }
