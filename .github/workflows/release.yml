@@ -24,7 +24,7 @@ jobs:
         run: mvn -B compile --file pom.xml
 
       - name: Jar with Maven
-        run: mvn -B jar --file pom.xml
+        run: mvn -B jar:jar --file pom.xml
 
       - uses: marvinpinto/action-automatic-releases@latest
         with:
