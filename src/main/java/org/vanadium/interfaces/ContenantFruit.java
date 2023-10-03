@@ -22,22 +22,23 @@ import org.vanadium.model.panier.PanierVideException;
 
 public interface ContenantFruit {
     
-    public abstract HashMap<Fruit, Double> getFruits();
+    public HashMap<Fruit, Double> getFruits();
     
-    public abstract void setFruits(HashMap<Fruit, Double> fruits);
+    public void setFruits(HashMap<Fruit, Double> fruits);
     
-    public abstract int getTailleContenant();
+    public int getTailleContenant();
     
-    public abstract Fruit getFruit(int i);
+    public Fruit getFruit(int i);
     
-    public abstract void ajout(Map.Entry<Fruit, Double> fruitQuantity);
+    public void ajout(Map.Entry<Fruit, Double> fruitQuantity);
     
-    public abstract void retrait();
+    public void retrait();
     
-    public abstract double getPrixTotal();
+    public double getPrixTotal();
     
-    public abstract void boycotteOrigine(Fruit.Pays origine);
+    public void boycotteOrigine(Fruit.Pays origine);
     
+    public void retrait(Fruit o);
     
     
     
