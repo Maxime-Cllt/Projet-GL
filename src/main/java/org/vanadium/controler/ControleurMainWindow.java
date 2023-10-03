@@ -5,8 +5,9 @@
  */
 package org.vanadium.controler;
 
+import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
-import org.vanadium.model.panier.Panier;
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.view.CreateFruitDialog;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  */
 public class ControleurMainWindow implements ActionListener {
     public ArrayList<Fruit> selectedFruits = new ArrayList<>();
-    private Panier m;
+    private ContenantFruitAbstract m;
 
     @Override
     public void actionPerformed(ActionEvent e) {   //Invoked when an action occurs
@@ -51,11 +52,11 @@ public class ControleurMainWindow implements ActionListener {
         }
     }
 
-    public void setModele(Panier panier) {
-        this.m = panier;
+    public void setModele(ContenantFruitAbstract contenantFruit) {
+        this.m = contenantFruit;
     }
 
-    public Panier getModele() {
+    public ContenantFruitAbstract getModele() {
         return m;
     }
 }

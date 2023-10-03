@@ -10,6 +10,8 @@ import java.util.Observable;
 import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
 import static org.vanadium.model.Utils.round;
+
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.PanierVideException;
 
 /**
@@ -19,9 +21,9 @@ import org.vanadium.model.panier.PanierVideException;
  * @author Rémy BARRANCO
  * @author Julie PRIGENT
  */
-public class Jus extends Observable implements ContenantFruit{
+public class Jus extends ContenantFruitAbstract {
     private HashMap<Fruit, Double> fruits;
-    
+
     public Jus(){
         fruits = new HashMap<>();
     }
@@ -62,6 +64,7 @@ public class Jus extends Observable implements ContenantFruit{
         if (fruits.containsKey(fruitQuantity.getKey())) {
             return;
         }
+        fruits.put(fruitQuantity.getKey(), fruitQuantity.getValue());
         setChanged();
         notifyObservers(this);
     }
@@ -69,7 +72,7 @@ public class Jus extends Observable implements ContenantFruit{
     @Override
     public void retrait() {
         if (fruits.isEmpty()) {
-            throw new PanierVideException();
+            throw new JusVideException();
         }
         fruits.remove(fruits.keySet().toArray()[fruits.size() - 1]);
         setChanged();

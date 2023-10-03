@@ -5,6 +5,7 @@
  */
 package org.vanadium.view;
 
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.Panier;
 
 import java.util.Observable;
@@ -39,8 +40,8 @@ public class VueConsole implements Observer {
         this.trace = trace;
     }
 
-    public void update(Observable m, Object panier) {   //This method is called whenever the observed object is changed
-        trace = "Nouvelle valeur : " + ((Panier) panier).getTailleContenant();
+    public void update(Observable m, Object contenant) {   //This method is called whenever the observed object is changed
+        trace = "Nouvelle valeur : " + ((ContenantFruitAbstract) contenant).getTailleContenant();
 
         System.out.println(trace);
     }

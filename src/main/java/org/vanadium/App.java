@@ -7,7 +7,9 @@ package org.vanadium;
 
 import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.interfaces.VueG;
-import org.vanadium.model.panier.Panier;
+import org.vanadium.model.ContenantFruitAbstract;
+import org.vanadium.model.Jus.Jus;
+import org.vanadium.model.Macedoine.Macedoine;
 import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;
 import org.vanadium.view.VueConsole;
@@ -23,10 +25,10 @@ public class App {
     private final VueG vueg;
     private final ControleurMainWindow controleur;
 
-    public App() throws PanierPleinException {
+    public App() {
         vueg = new MainWindow();
         controleur = new ControleurMainWindow();
-        Panier modele = new Panier(1);
+        ContenantFruitAbstract modele = new Macedoine();
         VueConsole vuec = new VueConsole();
 
         controleur.setModele(modele);
@@ -35,7 +37,7 @@ public class App {
         vueg.addControleur(controleur);
     }
 
-    public static void main(String[] args) throws PanierPleinException {
+    public static void main(String[] args){
         App test = new App();
     }
 }

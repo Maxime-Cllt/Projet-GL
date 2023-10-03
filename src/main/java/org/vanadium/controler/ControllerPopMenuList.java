@@ -1,6 +1,8 @@
 package org.vanadium.controler;
 
+import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.fruit.FruitItem;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.model.panier.PanierPleinException;
@@ -10,13 +12,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
 
 public class ControllerPopMenuList implements ActionListener {
 
-    private Panier m;
+    private ContenantFruitAbstract m;
     private JList list;
 
-    public ControllerPopMenuList(JList list, Panier m) {
+    public ControllerPopMenuList(JList list, ContenantFruitAbstract m) {
         this.list = list;
         this.m = m;
     }
@@ -38,8 +41,8 @@ public class ControllerPopMenuList implements ActionListener {
                 dialog.setVisible(true);
                 try {
                     m.retrait(dialog.getOldFruitItem().getFruit());
-                    m.ajout(dialog.getNewFruitItem().getFruit(), dialog.getNewFruitItem().getQuantity());
-                } catch (PanierPleinException ex) {
+                    m.ajout(Map.entry(dialog.getNewFruitItem().getFruit(), dialog.getNewFruitItem().getQuantity()));
+                } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
@@ -52,7 +55,7 @@ public class ControllerPopMenuList implements ActionListener {
         }
     }
 
-    public void setPanier(Panier m) {
+    public void setContenantFruit(ContenantFruitAbstract m) {
         this.m = m;
     }
 }

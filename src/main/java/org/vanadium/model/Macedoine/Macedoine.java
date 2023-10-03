@@ -10,6 +10,8 @@ import java.util.Observable;
 import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
 import static org.vanadium.model.Utils.round;
+
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.PanierVideException;
 
 /**
@@ -20,7 +22,7 @@ import org.vanadium.model.panier.PanierVideException;
  * @author Julie PRIGENT
  */
 
-public class Macedoine extends Observable implements ContenantFruit{
+public class Macedoine extends ContenantFruitAbstract {
     private HashMap<Fruit, Double> fruits;
 
     public Macedoine(){
@@ -64,6 +66,7 @@ public class Macedoine extends Observable implements ContenantFruit{
         if (fruits.containsKey(fruitQuantity.getKey())) {
             return;
         }
+        fruits.put(fruitQuantity.getKey(), fruitQuantity.getValue());
         setChanged();
         notifyObservers(this);
     }
@@ -71,7 +74,7 @@ public class Macedoine extends Observable implements ContenantFruit{
     @Override
     public void retrait() {
         if (fruits.isEmpty()) {
-            throw new PanierVideException();
+            throw new MacedoineVideException();
         }
         fruits.remove(fruits.keySet().toArray()[fruits.size() - 1]);
         setChanged();
