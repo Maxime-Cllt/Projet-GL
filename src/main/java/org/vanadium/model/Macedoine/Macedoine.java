@@ -155,6 +155,11 @@ public class Macedoine extends Observable implements ContenantFruit{
         }
     }
  
+    public void notifier() {
+        setChanged();
+        notifyObservers(this);
+    }
+        
     /**
      * @param o
      * @return boolean

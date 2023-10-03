@@ -154,6 +154,12 @@ public class Jus extends Observable implements ContenantFruit{
         }
     }
     
+    public void notifier() {
+        setChanged();
+        notifyObservers(this);
+    }
+        
+    
      /**
      * @param o
      * @return boolean
