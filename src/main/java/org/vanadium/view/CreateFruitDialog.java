@@ -8,7 +8,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
+import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
 
 public class CreateFruitDialog extends JDialog {
     private Fruit _fruit;
@@ -41,10 +43,19 @@ public class CreateFruitDialog extends JDialog {
         _ok.setName("Ajouter");
 
         // icon
-        ImageIcon img = new ImageIcon(new Orange().getImg());
-        Image image = img.getImage(); // transform it
-        Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        _img = new JLabel(new ImageIcon(newimg));
+        URL imageURL = getClass().getClassLoader().getResource(new Orange().getImg());
+
+        if (imageURL != null) {
+            ImageIcon img = new ImageIcon(imageURL);
+            Image image = img.getImage(); // transform it
+            Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            _img = new JLabel(new ImageIcon(newimg));
+
+            // Add _img to your Swing UI component as needed
+        } else {
+            System.err.println("Image not found: " + new Orange().getImg());
+        }
+
 
 
         // for type, pays, and prix add jlabel
@@ -90,10 +101,18 @@ public class CreateFruitDialog extends JDialog {
         // change img when type change
         _type.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                ImageIcon img1 = new ImageIcon(System.getProperty("user.dir") + "/ressources/" + Fruit.imgType.get(_type.getSelectedItem()));
-                Image image1 = img1.getImage();
-                Image newimg1 = image1.getScaledInstance(32, 32, Image.SCALE_SMOOTH); // scale it the smooth way
-                _img.setIcon(new ImageIcon(newimg1));
+                URL img1url = getClass().getClassLoader().getResource(Fruit.imgType.get(_type.getSelectedItem()));
+
+                if (img1url != null) {
+                    ImageIcon img = new ImageIcon(img1url);
+                    Image image = img.getImage(); // transform it
+                    Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+                    _img.setIcon(new ImageIcon(newimg));
+
+                    // Add _img to your Swing UI component as needed
+                } else {
+                    System.err.println("Image not found: " + new Orange().getImg());
+                }
             }
         });
 
