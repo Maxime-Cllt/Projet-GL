@@ -23,11 +23,15 @@ jobs:
         id: PR
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
+
       - name: Build with Maven
         run: xvfb-run mvn -B compile --file pom.xml
 
       - name: Jar with Maven
-        run: "mvn -B jar:jar -Djar.finalName=Projet-GL-${{ steps.PR.outputs.pr_title }} --file pom.xml"
+        run: "mvn -B jar:jar --file pom.xml"
+
+      - name: Rename file
+        run: "mv target/Projet-GL-1.0-SNAPSHOT.jar target/Projet-GL-${{ steps.PR.outputs.pr_title }}.jar"
 
 
       - uses: marvinpinto/action-automatic-releases@latest
