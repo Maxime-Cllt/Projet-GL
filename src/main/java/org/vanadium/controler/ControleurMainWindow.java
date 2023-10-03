@@ -9,6 +9,7 @@ import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.panier.Panier;
 import org.vanadium.view.CreateFruitDialog;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +32,6 @@ public class ControleurMainWindow implements ActionListener {
             if (((Component) e.getSource()).getName().equals("Plus")) {
                 CreateFruitDialog dialog = new CreateFruitDialog();
                 dialog.setVisible(true);
-                System.out.println(dialog.getFruit());
                 m.ajout(dialog.getFruit());
             } else {
                 if (selectedFruits.size() > 0) {
@@ -43,7 +43,11 @@ public class ControleurMainWindow implements ActionListener {
                     m.retrait();
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception q) {
+            JOptionPane.showMessageDialog(null,
+                    q.getMessage(),
+                    "Erreur",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

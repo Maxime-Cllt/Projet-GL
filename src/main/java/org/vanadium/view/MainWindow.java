@@ -32,6 +32,8 @@ public class MainWindow extends JFrame implements VueG {
     private JLabel nb_fruits;
     private JLabel prix_total;
 
+    private JLabel contenant_size;
+
     private JList list;
 
     public MainWindow() {
@@ -90,7 +92,7 @@ public class MainWindow extends JFrame implements VueG {
                 }
             }
         });
-
+        contenant_size.setText(c.getModele().getContenanceMax() + "");
     }
 
     @Override
@@ -131,10 +133,11 @@ public class MainWindow extends JFrame implements VueG {
 
     private void createCentralPan() {
         JPanel pan = new JPanel();
-        pan.setLayout(new GridLayout(2, 2));
+        pan.setLayout(new GridLayout(3, 2));
         pan.setBorder(BorderFactory.createTitledBorder("Panier"));
         prix_total = new JLabel("0€");
         nb_fruits = new JLabel("0");
+        contenant_size = new JLabel("0");
 
         JLabel prix_total_label = new JLabel("Prix total : ");
 
@@ -145,6 +148,11 @@ public class MainWindow extends JFrame implements VueG {
 
         pan.add(nb_fruits_label);
         pan.add(nb_fruits);
+
+        JLabel contenant_size_label = new JLabel("Taille du contenant : ");
+
+        pan.add(contenant_size_label);
+        pan.add(contenant_size);
 
         add(pan, BorderLayout.CENTER);
     }
