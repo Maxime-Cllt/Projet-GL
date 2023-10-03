@@ -123,6 +123,13 @@ public class Panier extends ContenantFruitAbstract {
         notifyObservers(this);
     }
 
+     /**
+     * @param f
+     * @param quantity
+     * @throws PanierPleinException
+     * @brief Méthode qui permet d'ajouter un fruit dans le panier
+     */
+    @Override
     public void ajout(Fruit f, Double quantity) throws PanierPleinException {
         Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
         ajout(fruitQuantity);
