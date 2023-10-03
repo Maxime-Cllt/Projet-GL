@@ -183,6 +183,15 @@ public class Panier extends ContenantFruitAbstract {
         notifyObservers(this);
     }
 
+    @Override
+    public double getPoidsTotal() {
+        double poidsTotal = 0;
+        for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
+            poidsTotal += fruitQuantity.getValue();
+        }
+        return round(poidsTotal, 2);
+    }
+
     public void notifier() {
         setChanged();
         notifyObservers(this);
