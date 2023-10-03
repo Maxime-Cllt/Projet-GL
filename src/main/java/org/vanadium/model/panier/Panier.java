@@ -2,10 +2,7 @@ package org.vanadium.model.panier;
 
 import org.vanadium.interfaces.Fruit;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Observable;
+import java.util.*;
 
 import static org.vanadium.model.Utils.round;
 
@@ -161,11 +158,9 @@ public class Panier extends Observable {
      * @brief Méthode qui permet de boycotter un fruit
      */
     public void boycotteOrigine(Fruit.Pays origine) {
-        for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
-            if (fruitQuantity.getKey().getOrigine() == origine) {
-                fruits.remove(fruitQuantity.getKey());
-            }
-        }
+        fruits.entrySet().removeIf(item -> item.getKey().getOrigine() == origine);
+        setChanged();
+        notifyObservers(this);
     }
 
     public void notifier() {
