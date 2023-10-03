@@ -38,6 +38,7 @@ public class CreateFruitDialog extends JDialog {
         _prix = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 100.0, 0.1));
         _quantity = new JSpinner(new SpinnerNumberModel(1, 0.1, 10, 0.1));
         _ok = new JButton("Ajouter");
+        _ok.setName("Ajouter");
 
         // icon
         ImageIcon img = new ImageIcon(new Orange().getImg());
