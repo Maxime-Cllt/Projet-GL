@@ -4,15 +4,14 @@
  */
 package org.vanadium.model.Jus;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
-import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
-import static org.vanadium.model.Utils.round;
-
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.PanierVideException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.vanadium.model.Utils.round;
 
 /**
  * @author Maxime Colliat
@@ -23,14 +22,15 @@ import org.vanadium.model.panier.PanierVideException;
  */
 public class Jus extends ContenantFruitAbstract {
     private HashMap<Fruit, Double> fruits;
-        /**
-     * @brief Constructeur de la classe Jus qui permet d'initialiser les attributs 
+
+    /**
+     * @brief Constructeur de la classe Jus qui permet d'initialiser les attributs
      */
-    public Jus(){
+    public Jus() {
         fruits = new HashMap<>();
     }
-    
-        /**
+
+    /**
      * @return String
      * @brief Méthode toString de la classe jus qui permet d'afficher le contenu du jus
      */
@@ -40,8 +40,8 @@ public class Jus extends ContenantFruitAbstract {
                 "fruits=" + fruits +
                 '}';
     }
-    
-    
+
+
     /**
      * @return HashMap<Fruit, Double>
      * @brief Méthode qui permet de récupérer les fruits du jus
@@ -51,7 +51,7 @@ public class Jus extends ContenantFruitAbstract {
         return fruits;
     }
 
-        /**
+    /**
      * @param fruits
      * @brief Méthode qui permet de modifier les fruits du jus
      */
@@ -60,10 +60,10 @@ public class Jus extends ContenantFruitAbstract {
         this.fruits = fruits;
     }
 
-    
+
     /**
      * @return int
-     * @brief Méthode qui permet de récupérer la taille du jus 
+     * @brief Méthode qui permet de récupérer la taille du jus
      */
     @Override
     public int getTailleContenant() {
@@ -79,8 +79,8 @@ public class Jus extends ContenantFruitAbstract {
     public Fruit getFruit(int i) {
         return (Fruit) fruits.keySet().toArray()[i];
     }
-    
-     /**
+
+    /**
      * @return boolean
      * @brief Méthode qui permet de savoir si le jus est vide
      */
@@ -89,7 +89,7 @@ public class Jus extends ContenantFruitAbstract {
         return fruits.isEmpty();
     }
 
-    
+
     /**
      * @param fruitQuantity
      * @throws PanierPleinException
@@ -105,7 +105,7 @@ public class Jus extends ContenantFruitAbstract {
         notifyObservers(this);
     }
 
-     /**
+    /**
      * @param f
      * @param quantity
      * @brief Méthode qui permet d'ajouter un fruit dans le jus
@@ -115,8 +115,8 @@ public class Jus extends ContenantFruitAbstract {
         Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
         ajout(fruitQuantity);
     }
-    
-   /**
+
+    /**
      * @throws PanierVideException
      * @brief Méthode qui permet de retirer un fruit du jus
      */
@@ -130,7 +130,7 @@ public class Jus extends ContenantFruitAbstract {
         notifyObservers(this);
     }
 
-     /**
+    /**
      * @param o
      * @brief Méthode qui permet de retirer un fruit du jus
      */
@@ -140,8 +140,8 @@ public class Jus extends ContenantFruitAbstract {
         setChanged();
         notifyObservers(this);
     }
-    
-     /**
+
+    /**
      * @return double
      * @brief Méthode qui permet de calculer le prix du jus
      */
@@ -155,7 +155,7 @@ public class Jus extends ContenantFruitAbstract {
 
     }
 
-     /**
+    /**
      * @param origine
      * @brief Méthode qui permet de boycotter un fruit
      */
@@ -167,14 +167,14 @@ public class Jus extends ContenantFruitAbstract {
             }
         }
     }
-    
+
     public void notifier() {
         setChanged();
         notifyObservers(this);
     }
-        
-    
-     /**
+
+
+    /**
      * @param o
      * @return boolean
      * @brief Méthode qui permet de comparer deux jus de fruit
@@ -195,6 +195,6 @@ public class Jus extends ContenantFruitAbstract {
         }
         return false;
     }
-    
-    
+
+
 }

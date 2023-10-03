@@ -1,12 +1,10 @@
 package org.vanadium.model.panier;
 
 import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.ContenantFruitAbstract;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Observable;
-import org.vanadium.interfaces.ContenantFruit;
-import org.vanadium.model.ContenantFruitAbstract;
 
 import static org.vanadium.model.Utils.round;
 
@@ -91,7 +89,7 @@ public class Panier extends ContenantFruitAbstract {
      * @return boolean
      * @brief Méthode qui permet de savoir si le panier est vide
      */
-    
+
     public boolean estVide() {
         return fruits.isEmpty();
     }
@@ -123,7 +121,7 @@ public class Panier extends ContenantFruitAbstract {
         notifyObservers(this);
     }
 
-     /**
+    /**
      * @param f
      * @param quantity
      * @throws PanierPleinException
@@ -153,7 +151,7 @@ public class Panier extends ContenantFruitAbstract {
      * @param o
      * @brief Méthode qui permet de retirer un fruit du panier
      */
-    
+
     @Override
     public void retrait(Fruit o) {
         fruits.remove(o);

@@ -8,9 +8,7 @@ package org.vanadium;
 import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.interfaces.VueG;
 import org.vanadium.model.ContenantFruitAbstract;
-import org.vanadium.model.Jus.Jus;
 import org.vanadium.model.Macedoine.Macedoine;
-import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.MainWindow;
 import org.vanadium.view.VueConsole;
 
@@ -37,7 +35,7 @@ public class App {
         vueg.addControleur(controleur);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         App test = new App();
     }
 }
