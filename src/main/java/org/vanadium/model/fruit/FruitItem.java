@@ -2,6 +2,8 @@ package org.vanadium.model.fruit;
 
 import org.vanadium.interfaces.Fruit;
 
+import static org.vanadium.model.Utils.round;
+
 public class FruitItem {
     private Fruit fruit;
     private double quantity;
@@ -33,6 +35,6 @@ public class FruitItem {
     }
 
     public String toString() {
-        return quantity + " kg de " + fruit.toString();
+        return round(quantity,2) + " kg de " + fruit.toString();
     }
 }

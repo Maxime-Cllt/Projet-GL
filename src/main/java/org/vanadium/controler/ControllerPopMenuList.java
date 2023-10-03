@@ -9,6 +9,7 @@ import org.vanadium.view.ModifyFruitDialog;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class ControllerPopMenuList implements ActionListener {
 
@@ -24,18 +25,28 @@ public class ControllerPopMenuList implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (m == null) return;
-        FruitItem f_item = ((FruitItem) list.getSelectedValue());
-        Fruit f = f_item.getFruit();
+        List selectedFruits = list.getSelectedValuesList();
         switch (e.getActionCommand()) {
-            case "Supprimer" -> m.retrait(f);
+            case "Supprimer" -> {
+                for (Object o : selectedFruits) {
+                    FruitItem f_item = (FruitItem) o;
+                    m.retrait(f_item.getFruit());
+                }
+            }
             case "Modifier" -> {
-                ModifyFruitDialog dialog = new ModifyFruitDialog(f_item);
+                ModifyFruitDialog dialog = new ModifyFruitDialog((FruitItem) selectedFruits.get(0));
                 dialog.setVisible(true);
                 try {
                     m.retrait(dialog.getOldFruitItem().getFruit());
                     m.ajout(dialog.getNewFruitItem().getFruit(), dialog.getNewFruitItem().getQuantity());
                 } catch (PanierPleinException ex) {
                     throw new RuntimeException(ex);
+                }
+            }
+            case "Boycotter" -> {
+                for (Object o : selectedFruits) {
+                    FruitItem f_item = (FruitItem) o;
+                    m.boycotteOrigine(f_item.getFruit().getOrigine());
                 }
             }
         }

@@ -16,10 +16,7 @@ public class CreateFruitDialog extends JDialog {
     private JComboBox<Fruit.Pays> _pays;
     private JComboBox<Fruit.Type> _type;
     private JSpinner _prix;
-
     private JSpinner _quantity;
-
-    // img
     private JLabel _img;
     private JButton _ok;
 

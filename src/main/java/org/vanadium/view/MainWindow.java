@@ -76,6 +76,16 @@ public class MainWindow extends JFrame implements VueG {
                 if (evt.getButton() == java.awt.event.MouseEvent.BUTTON3) {
                     MenuFruitList menu = new MenuFruitList();
                     menu.addControleur(new ControllerPopMenuList(list, c.getModele()));
+                    if(list.getSelectedValuesList().size() > 1){
+                        menu.setEnableMenu(MenuFruitList.MenuType.BOYCOTTE, false);
+                        menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
+                    }
+                    else{
+                        if(list.getSelectedValuesList().isEmpty()){
+                            menu.setEnableMenu(MenuFruitList.MenuType.DELETE, false);
+                            menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
+                        }
+                    }
                     menu.show(evt.getComponent(), evt.getX(), evt.getY());
                 }
             }
