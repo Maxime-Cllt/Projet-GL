@@ -22,7 +22,8 @@ jobs:
 
       - uses: 8BitJonny/gh-get-current-pr@2.2.0
         id: PR
-
+        with:
+          github-token: ${{ secrets.RELEASE_TOKEN }}
       - name: Build with Maven
         run: xvfb-run mvn -B compile --file pom.xml
 
