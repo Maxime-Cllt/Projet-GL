@@ -122,6 +122,11 @@ public class Panier extends Observable implements ContenantFruit{
         notifyObservers(this);
     }
 
+    public void ajout(Fruit f, Double quantity) throws PanierPleinException {
+        Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
+        ajout(fruitQuantity);
+    }
+
     /**
      * @throws PanierVideException
      * @brief Méthode qui permet de retirer un fruit du panier
@@ -167,11 +172,14 @@ public class Panier extends Observable implements ContenantFruit{
      */
     @Override
     public void boycotteOrigine(Fruit.Pays origine) {
-        for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
-            if (fruitQuantity.getKey().getOrigine() == origine) {
-                fruits.remove(fruitQuantity.getKey());
-            }
-        }
+        fruits.entrySet().removeIf(item -> item.getKey().getOrigine() == origine);
+        setChanged();
+        notifyObservers(this);
+    }
+
+    public void notifier() {
+        setChanged();
+        notifyObservers(this);
     }
 
     /**

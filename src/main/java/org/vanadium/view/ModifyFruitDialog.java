@@ -2,27 +2,31 @@ package org.vanadium.view;
 
 import org.vanadium.factories.Factory;
 import org.vanadium.interfaces.Fruit;
-import org.vanadium.model.fruit.Orange;
+import org.vanadium.model.fruit.FruitItem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.util.Map;
 
-public class CreateFruitDialog extends JDialog {
-    private Fruit _fruit;
+public class ModifyFruitDialog extends JDialog {
+    private FruitItem _new_fruit;
+    private FruitItem _old_fruit;
 
     private JComboBox<Fruit.Pays> _pays;
     private JComboBox<Fruit.Type> _type;
     private JSpinner _prix;
+
     private JSpinner _quantity;
+
+    // img
     private JLabel _img;
     private JButton _ok;
 
-    public CreateFruitDialog() {
+    public ModifyFruitDialog(FruitItem fruit) {
         super((java.awt.Frame) null, true);
-        setTitle("Ajouter un Fruit");
+        _old_fruit = fruit;
+        setTitle("Modifier un Fruit");
         setMinimumSize(new Dimension(500, 250));
         this.setResizable(true);
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
@@ -34,14 +38,18 @@ public class CreateFruitDialog extends JDialog {
         pan.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         _pays = new JComboBox<>(Fruit.Pays.values());
+        _pays.setSelectedItem(_old_fruit.getFruit().getOrigine());
         _type = new JComboBox<>(Fruit.Type.values());
+        _type.setSelectedItem(Fruit.Type.getType(_old_fruit.getFruit()));
         _prix = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 100.0, 0.1));
+        _prix.setValue(_old_fruit.getFruit().getPrix());
         _quantity = new JSpinner(new SpinnerNumberModel(1, 0.1, 10, 0.1));
-        _ok = new JButton("Ajouter");
-        _ok.setName("Ajouter");
+        _quantity.setValue(_old_fruit.getQuantity());
+
+        _ok = new JButton("Modifier");
 
         // icon
-        ImageIcon img = new ImageIcon(new Orange().getImg());
+        ImageIcon img = new ImageIcon(_old_fruit.getFruit().getImg());
         Image image = img.getImage(); // transform it
         Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         _img = new JLabel(new ImageIcon(newimg));
@@ -100,9 +108,10 @@ public class CreateFruitDialog extends JDialog {
 
 
         _ok.addActionListener(e -> {
-            _fruit = Factory.createFruit((Fruit.Type) _type.getSelectedItem());
-            _fruit.setOrigine((Fruit.Pays) _pays.getSelectedItem());
-            _fruit.setPrix((double) _prix.getValue());
+            Fruit f = Factory.createFruit((Fruit.Type) _type.getSelectedItem());
+            f.setOrigine((Fruit.Pays) _pays.getSelectedItem());
+            f.setPrix((double) _prix.getValue());
+            _new_fruit = new FruitItem(f, (double) _quantity.getValue());
             dispose();
         });
 
@@ -112,7 +121,14 @@ public class CreateFruitDialog extends JDialog {
      * @return Map.Entry<Fruit, Double>
      * @brief Méthode qui permet de récupérer le fruit créé
      */
-    public Map.Entry<Fruit, Double> getFruit() {
-        return Map.entry(_fruit, (double) _quantity.getValue());
+    public FruitItem getNewFruitItem() {
+        if (_new_fruit == null) {
+            return _old_fruit;
+        }
+        return _new_fruit;
+    }
+
+    public FruitItem getOldFruitItem() {
+        return _old_fruit;
     }
 }
