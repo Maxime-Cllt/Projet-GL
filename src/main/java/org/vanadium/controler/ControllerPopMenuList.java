@@ -1,11 +1,7 @@
 package org.vanadium.controler;
 
-import org.vanadium.interfaces.ContenantFruit;
-import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.model.panier.Panier;
-import org.vanadium.model.panier.PanierPleinException;
 import org.vanadium.view.ModifyFruitDialog;
 
 import javax.swing.*;
@@ -17,7 +13,7 @@ import java.util.Map;
 public class ControllerPopMenuList implements ActionListener {
 
     private ContenantFruitAbstract m;
-    private JList list;
+    private final JList list;
 
     public ControllerPopMenuList(JList list, ContenantFruitAbstract m) {
         this.list = list;

@@ -60,7 +60,7 @@ public class Inconnue implements Fruit {
 
     @Override
     public String toString() {
-        return "Fruit inconnue de " + origine.toString() + " a " + round(prix, 2)  + " euros";
+        return "Fruit inconnue de " + origine.toString() + " a " + round(prix, 2) + " euros";
     }
 
     @Override

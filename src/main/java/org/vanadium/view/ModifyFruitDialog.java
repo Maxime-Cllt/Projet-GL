@@ -11,7 +11,7 @@ import java.awt.event.ItemEvent;
 
 public class ModifyFruitDialog extends JDialog {
     private FruitItem _new_fruit;
-    private FruitItem _old_fruit;
+    private final FruitItem _old_fruit;
 
     private JComboBox<Fruit.Pays> _pays;
     private JComboBox<Fruit.Type> _type;

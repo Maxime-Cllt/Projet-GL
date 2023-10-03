@@ -4,15 +4,14 @@
  */
 package org.vanadium.model.Macedoine;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
-import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
-import static org.vanadium.model.Utils.round;
-
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.PanierVideException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.vanadium.model.Utils.round;
 
 /**
  * @author Maxime Colliat
@@ -26,13 +25,13 @@ public class Macedoine extends ContenantFruitAbstract {
     private HashMap<Fruit, Double> fruits;
 
     /**
-     * @brief Constructeur de la classe Macedoine qui permet d'initialiser les attributs 
+     * @brief Constructeur de la classe Macedoine qui permet d'initialiser les attributs
      */
-    public Macedoine(){
+    public Macedoine() {
         fruits = new HashMap<>();
 
     }
-    
+
     /**
      * @return String
      * @brief Méthode toString de la classe Macedoine qui permet d'afficher le contenu de la macedoine
@@ -43,8 +42,8 @@ public class Macedoine extends ContenantFruitAbstract {
                 "fruits=" + fruits +
                 '}';
     }
-    
-    
+
+
     /**
      * @return HashMap<Fruit, Double>
      * @brief Méthode qui permet de récupérer les fruits de la macedoine
@@ -53,7 +52,7 @@ public class Macedoine extends ContenantFruitAbstract {
     public HashMap<Fruit, Double> getFruits() {
         return fruits;
     }
-    
+
     /**
      * @param fruits
      * @brief Méthode qui permet de modifier les fruits de la macedoine
@@ -65,7 +64,7 @@ public class Macedoine extends ContenantFruitAbstract {
 
     /**
      * @return int
-     * @brief Méthode qui permet de récupérer la taille de la macedoine 
+     * @brief Méthode qui permet de récupérer la taille de la macedoine
      */
     @Override
     public int getTailleContenant() {
@@ -81,7 +80,7 @@ public class Macedoine extends ContenantFruitAbstract {
     public Fruit getFruit(int i) {
         return (Fruit) fruits.keySet().toArray()[i];
     }
-    
+
     /**
      * @return boolean
      * @brief Méthode qui permet de savoir si la macedoine est vide
@@ -105,8 +104,8 @@ public class Macedoine extends ContenantFruitAbstract {
         setChanged();
         notifyObservers(this);
     }
-    
-     /**
+
+    /**
      * @param f
      * @param quantity
      * @brief Méthode qui permet d'ajouter un fruit dans la macedoine
@@ -130,8 +129,8 @@ public class Macedoine extends ContenantFruitAbstract {
         setChanged();
         notifyObservers(this);
     }
-    
-        /**
+
+    /**
      * @param o
      * @brief Méthode qui permet de retirer un fruit de la macedoine
      */
@@ -168,12 +167,12 @@ public class Macedoine extends ContenantFruitAbstract {
             }
         }
     }
- 
+
     public void notifier() {
         setChanged();
         notifyObservers(this);
     }
-        
+
     /**
      * @param o
      * @return boolean
@@ -195,7 +194,6 @@ public class Macedoine extends ContenantFruitAbstract {
         }
         return false;
     }
-    
-    
-    
+
+
 }

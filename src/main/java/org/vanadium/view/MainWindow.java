@@ -11,7 +11,6 @@ import org.vanadium.interfaces.Fruit;
 import org.vanadium.interfaces.VueG;
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -79,12 +78,11 @@ public class MainWindow extends JFrame implements VueG {
                 if (evt.getButton() == java.awt.event.MouseEvent.BUTTON3) {
                     MenuFruitList menu = new MenuFruitList();
                     menu.addControleur(new ControllerPopMenuList(list, c.getModele()));
-                    if(list.getSelectedValuesList().size() > 1){
+                    if (list.getSelectedValuesList().size() > 1) {
                         menu.setEnableMenu(MenuFruitList.MenuType.BOYCOTTE, false);
                         menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
-                    }
-                    else{
-                        if(list.getSelectedValuesList().isEmpty()){
+                    } else {
+                        if (list.getSelectedValuesList().isEmpty()) {
                             menu.setEnableMenu(MenuFruitList.MenuType.DELETE, false);
                             menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
                         }

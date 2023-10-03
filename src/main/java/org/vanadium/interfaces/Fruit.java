@@ -1,9 +1,9 @@
 package org.vanadium.interfaces;
 
 import org.vanadium.model.fruit.Banane;
+import org.vanadium.model.fruit.Inconnue;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
-import org.vanadium.model.fruit.Inconnue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -100,6 +100,14 @@ public interface Fruit {
 
         private String name = "";
 
+        /**
+         * @param name nom du type de fruit
+         * @brief Constructeur de l'enum Type de fruit avec paramètre name
+         */
+        Type(String name) {
+            this.name = name;
+        }
+
         public static Type getType(Fruit f) {
             return switch (f.getClass().getSimpleName()) {
                 case "Orange" -> Type.ORANGE;
@@ -107,14 +115,6 @@ public interface Fruit {
                 case "Pomme" -> Type.POMME;
                 default -> Type.INCONNU;
             };
-        }
-
-        /**
-         * @param name nom du type de fruit
-         * @brief Constructeur de l'enum Type de fruit avec paramètre name
-         */
-        Type(String name) {
-            this.name = name;
         }
 
         /**

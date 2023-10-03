@@ -6,11 +6,6 @@ package org.vanadium.interfaces;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.vanadium.interfaces.Fruit;
-import java.util.Observable;
-
-import org.vanadium.model.panier.PanierPleinException;
-import org.vanadium.model.panier.PanierVideException;
 
 /**
  * @author Maxime Colliat
@@ -21,36 +16,28 @@ import org.vanadium.model.panier.PanierVideException;
  */
 
 public interface ContenantFruit {
-    
-    public HashMap<Fruit, Double> getFruits();
-    
-    public void setFruits(HashMap<Fruit, Double> fruits);
-    
-    public int getTailleContenant();
 
-    public Fruit getFruit(int i);
-    
-    public void ajout(Map.Entry<Fruit, Double> fruitQuantity);
-    
-    public void ajout(Fruit f, Double quantity);
-    
-    public void retrait();
-    
-    public void retrait(Fruit o);
-    
-    public boolean estVide();
-    
-    public double getPrixTotal();
-    
-    public void boycotteOrigine(Fruit.Pays origine);
-   
-  
-    
-    
-    
-    
-    
-    
-    
-    
+    HashMap<Fruit, Double> getFruits();
+
+    void setFruits(HashMap<Fruit, Double> fruits);
+
+    int getTailleContenant();
+
+    Fruit getFruit(int i);
+
+    void ajout(Map.Entry<Fruit, Double> fruitQuantity);
+
+    void ajout(Fruit f, Double quantity);
+
+    void retrait();
+
+    void retrait(Fruit o);
+
+    boolean estVide();
+
+    double getPrixTotal();
+
+    void boycotteOrigine(Fruit.Pays origine);
+
+
 }

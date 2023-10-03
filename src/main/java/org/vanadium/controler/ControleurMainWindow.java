@@ -5,7 +5,6 @@
  */
 package org.vanadium.controler;
 
-import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.view.CreateFruitDialog;
@@ -52,11 +51,11 @@ public class ControleurMainWindow implements ActionListener {
         }
     }
 
-    public void setModele(ContenantFruitAbstract contenantFruit) {
-        this.m = contenantFruit;
-    }
-
     public ContenantFruitAbstract getModele() {
         return m;
+    }
+
+    public void setModele(ContenantFruitAbstract contenantFruit) {
+        this.m = contenantFruit;
     }
 }

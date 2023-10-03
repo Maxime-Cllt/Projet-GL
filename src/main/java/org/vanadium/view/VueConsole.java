@@ -6,7 +6,6 @@
 package org.vanadium.view;
 
 import org.vanadium.model.ContenantFruitAbstract;
-import org.vanadium.model.panier.Panier;
 
 import java.util.Observable;
 import java.util.Observer;
