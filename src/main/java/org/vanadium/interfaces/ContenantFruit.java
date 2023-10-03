@@ -39,5 +39,14 @@ public interface ContenantFruit {
 
     void boycotteOrigine(Fruit.Pays origine);
 
+    double getPoidsTotal();
+
+
+    enum TypeContenant {
+        PANIER,
+        JUS,
+        MACEDOINE
+    }
+
 
 }

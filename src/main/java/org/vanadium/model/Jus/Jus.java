@@ -92,7 +92,7 @@ public class Jus extends ContenantFruitAbstract {
 
     /**
      * @param fruitQuantity
-     * @throws PanierPleinException
+     * @throws PanierVideException
      * @brief Méthode qui permet d'ajouter un fruit dans le jus
      */
     @Override
@@ -161,11 +161,18 @@ public class Jus extends ContenantFruitAbstract {
      */
     @Override
     public void boycotteOrigine(Fruit.Pays origine) {
+        fruits.entrySet().removeIf(item -> item.getKey().getOrigine() == origine);
+        setChanged();
+        notifyObservers(this);
+    }
+
+    @Override
+    public double getPoidsTotal() {
+        double poidsTotal = 0;
         for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
-            if (fruitQuantity.getKey().getOrigine() == origine) {
-                fruits.remove(fruitQuantity.getKey());
-            }
+            poidsTotal += fruitQuantity.getValue();
         }
+        return round(poidsTotal, 2);
     }
 
     public void notifier() {

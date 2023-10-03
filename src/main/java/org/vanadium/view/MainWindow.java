@@ -32,12 +32,14 @@ public class MainWindow extends JFrame implements VueG {
     private JLabel nb_fruits;
     private JLabel prix_total;
 
-    private JLabel contenant_size;
+    private JLabel total_poids;
+
+    private JPanel center_pan = new JPanel();
 
     private JList list;
 
     public MainWindow() {
-        super("Fruit");
+        super("Vanadium");
         // set Mini size
         this.setMinimumSize(new Dimension(500, 500));
         inc = new JButton("+");
@@ -91,12 +93,13 @@ public class MainWindow extends JFrame implements VueG {
                 }
             }
         });
-        contenant_size.setText(c.getModele() + "");
+        center_pan.setBorder(BorderFactory.createTitledBorder(c.getModele().getClass().getSimpleName()));
     }
 
     @Override
     public void update(Observable m, Object contenant) {     //This method is called whenever the observed object is changed
         prix_total.setText(((ContenantFruitAbstract) contenant).getPrixTotal() + "€");
+        total_poids.setText(((ContenantFruitAbstract) contenant).getPoidsTotal() + "kg");
         nb_fruits.setText(((ContenantFruitAbstract) contenant).getFruits().size() + "");
         ArrayList<FruitItem> fruits = new ArrayList<>();
         for (Fruit f : ((ContenantFruitAbstract) contenant).getFruits().keySet()) {
@@ -131,29 +134,28 @@ public class MainWindow extends JFrame implements VueG {
     }
 
     private void createCentralPan() {
-        JPanel pan = new JPanel();
-        pan.setLayout(new GridLayout(3, 2));
-        pan.setBorder(BorderFactory.createTitledBorder("Panier"));
+        center_pan = new JPanel();
+        center_pan.setLayout(new GridLayout(3, 2));
         prix_total = new JLabel("0€");
         nb_fruits = new JLabel("0");
-        contenant_size = new JLabel("0");
+        total_poids = new JLabel("0");
 
         JLabel prix_total_label = new JLabel("Prix total : ");
 
-        pan.add(prix_total_label);
-        pan.add(prix_total);
+        center_pan.add(prix_total_label);
+        center_pan.add(prix_total);
 
         JLabel nb_fruits_label = new JLabel("Nombre de fruits : ");
 
-        pan.add(nb_fruits_label);
-        pan.add(nb_fruits);
+        center_pan.add(nb_fruits_label);
+        center_pan.add(nb_fruits);
 
-        JLabel contenant_size_label = new JLabel("Taille du contenant : ");
+        JLabel contenant_size_label = new JLabel("total poids : ");
 
-        pan.add(contenant_size_label);
-        pan.add(contenant_size);
+        center_pan.add(contenant_size_label);
+        center_pan.add(total_poids);
 
-        add(pan, BorderLayout.CENTER);
+        add(center_pan, BorderLayout.CENTER);
     }
 
 }
