@@ -32,15 +32,19 @@ public interface ContenantFruit {
     
     public void ajout(Map.Entry<Fruit, Double> fruitQuantity);
     
+    public void ajout(Fruit f, Double quantity);
+    
     public void retrait();
+    
+    public void retrait(Fruit o);
     
     public boolean estVide();
     
     public double getPrixTotal();
     
     public void boycotteOrigine(Fruit.Pays origine);
-    
-    public void retrait(Fruit o);
+   
+  
     
     
     
