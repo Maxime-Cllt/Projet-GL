@@ -102,6 +102,17 @@ public class Macedoine extends Observable implements ContenantFruit{
         setChanged();
         notifyObservers(this);
     }
+    
+     /**
+     * @param f
+     * @param quantity
+     * @brief Méthode qui permet d'ajouter un fruit dans la macedoine
+     */
+    @Override
+    public void ajout(Fruit f, Double quantity) {
+        Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
+        ajout(fruitQuantity);
+    }
 
     /**
      * @throws PanierVideException

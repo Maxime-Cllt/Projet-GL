@@ -102,6 +102,17 @@ public class Jus extends Observable implements ContenantFruit{
         notifyObservers(this);
     }
 
+     /**
+     * @param f
+     * @param quantity
+     * @brief Méthode qui permet d'ajouter un fruit dans le jus
+     */
+    @Override
+    public void ajout(Fruit f, Double quantity) {
+        Map.Entry<Fruit, Double> fruitQuantity = Map.entry(f, quantity);
+        ajout(fruitQuantity);
+    }
+    
    /**
      * @throws PanierVideException
      * @brief Méthode qui permet de retirer un fruit du jus
