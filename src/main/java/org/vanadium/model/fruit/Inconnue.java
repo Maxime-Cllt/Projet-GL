@@ -65,7 +65,7 @@ public class Inconnue implements Fruit {
 
     @Override
     public String getImg() {
-        return System.getProperty("user.dir") + "/ressources/" + Fruit.imgClass.get(this.getClass());
+        return Fruit.imgClass.get(this.getClass());
     }
 
     /**
