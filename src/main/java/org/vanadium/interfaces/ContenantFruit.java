@@ -27,7 +27,7 @@ public interface ContenantFruit {
     public void setFruits(HashMap<Fruit, Double> fruits);
     
     public int getTailleContenant();
-    
+
     public Fruit getFruit(int i);
     
     public void ajout(Map.Entry<Fruit, Double> fruitQuantity);

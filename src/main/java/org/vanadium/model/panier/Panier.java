@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import org.vanadium.interfaces.ContenantFruit;
+import org.vanadium.model.ContenantFruitAbstract;
 
 import static org.vanadium.model.Utils.round;
 
@@ -17,7 +18,7 @@ import static org.vanadium.model.Utils.round;
  * @author Rémy BARRANCO
  * @author Julie PRIGENT
  */
-public class Panier extends Observable implements ContenantFruit{
+public class Panier extends ContenantFruitAbstract {
     private final int contenanceMax;
     private HashMap<Fruit, Double> fruits;
 

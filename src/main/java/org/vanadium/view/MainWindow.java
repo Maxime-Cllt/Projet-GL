@@ -9,6 +9,7 @@ import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.controler.ControllerPopMenuList;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.interfaces.VueG;
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.fruit.FruitItem;
 import org.vanadium.model.panier.Panier;
 
@@ -92,16 +93,16 @@ public class MainWindow extends JFrame implements VueG {
                 }
             }
         });
-        contenant_size.setText(c.getModele().getContenanceMax() + "");
+        contenant_size.setText(c.getModele() + "");
     }
 
     @Override
-    public void update(Observable m, Object panier) {     //This method is called whenever the observed object is changed
-        prix_total.setText(((Panier) panier).getPrixTotal() + "€");
-        nb_fruits.setText(((Panier) panier).getFruits().size() + "");
+    public void update(Observable m, Object contenant) {     //This method is called whenever the observed object is changed
+        prix_total.setText(((ContenantFruitAbstract) contenant).getPrixTotal() + "€");
+        nb_fruits.setText(((ContenantFruitAbstract) contenant).getFruits().size() + "");
         ArrayList<FruitItem> fruits = new ArrayList<>();
-        for (Fruit f : ((Panier) panier).getFruits().keySet()) {
-            fruits.add(new FruitItem(f, ((Panier) panier).getFruits().get(f)));
+        for (Fruit f : ((ContenantFruitAbstract) contenant).getFruits().keySet()) {
+            fruits.add(new FruitItem(f, ((ContenantFruitAbstract) contenant).getFruits().get(f)));
         }
         list.setListData(fruits.toArray());
     }
