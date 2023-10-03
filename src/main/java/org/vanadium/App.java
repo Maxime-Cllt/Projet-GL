@@ -26,7 +26,7 @@ public class App {
     public App() throws PanierPleinException {
         vueg = new MainWindow();
         controleur = new ControleurMainWindow();
-        Panier modele = new Panier(100);
+        Panier modele = new Panier(1);
         VueConsole vuec = new VueConsole();
 
         controleur.setModele(modele);

@@ -94,7 +94,6 @@ public class CreateFruitDialog extends JDialog {
                 Image image1 = img1.getImage();
                 Image newimg1 = image1.getScaledInstance(32, 32, Image.SCALE_SMOOTH); // scale it the smooth way
                 _img.setIcon(new ImageIcon(newimg1));
-
             }
         });
 
