@@ -29,6 +29,7 @@ jobs:
       - name: Jar with Maven
         run: "mvn -B jar:jar -Djar.finalName=Projet-GL-${{ steps.PR.outputs.pr_title }} --file pom.xml"
 
+
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.RELEASE_TOKEN }}"
