@@ -34,6 +34,8 @@ public interface ContenantFruit {
     
     public void retrait();
     
+    public boolean estVide();
+    
     public double getPrixTotal();
     
     public void boycotteOrigine(Fruit.Pays origine);
