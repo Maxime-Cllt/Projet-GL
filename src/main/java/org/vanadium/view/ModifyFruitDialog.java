@@ -3,15 +3,17 @@ package org.vanadium.view;
 import org.vanadium.factories.Factory;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.FruitItem;
+import org.vanadium.model.fruit.Orange;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ItemEvent;
+import java.net.URL;
 
 public class ModifyFruitDialog extends JDialog {
     private FruitItem _new_fruit;
-    private FruitItem _old_fruit;
+    private final FruitItem _old_fruit;
 
     private JComboBox<Fruit.Pays> _pays;
     private JComboBox<Fruit.Type> _type;
@@ -49,10 +51,18 @@ public class ModifyFruitDialog extends JDialog {
         _ok = new JButton("Modifier");
 
         // icon
-        ImageIcon img = new ImageIcon(_old_fruit.getFruit().getImg());
-        Image image = img.getImage(); // transform it
-        Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        _img = new JLabel(new ImageIcon(newimg));
+        URL imageURL = getClass().getClassLoader().getResource(new Orange().getImg());
+
+        if (imageURL != null) {
+            ImageIcon img = new ImageIcon(imageURL);
+            Image image = img.getImage(); // transform it
+            Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            _img = new JLabel(new ImageIcon(newimg));
+
+            // Add _img to your Swing UI component as needed
+        } else {
+            System.err.println("Image not found: " + new Orange().getImg());
+        }
 
 
         // for type, pays, and prix add jlabel
@@ -97,13 +107,21 @@ public class ModifyFruitDialog extends JDialog {
 
         // change img when type change
         _type.addItemListener(e -> {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                ImageIcon img1 = new ImageIcon(System.getProperty("user.dir") + "/ressources/" + Fruit.imgType.get(_type.getSelectedItem()));
-                Image image1 = img1.getImage();
-                Image newimg1 = image1.getScaledInstance(32, 32, Image.SCALE_SMOOTH); // scale it the smooth way
-                _img.setIcon(new ImageIcon(newimg1));
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        URL img1url = getClass().getClassLoader().getResource(Fruit.imgType.get(_type.getSelectedItem()));
+                        System.out.println(Fruit.imgType.get(_type.getSelectedItem()));
+                        if (img1url != null) {
+                            ImageIcon img = new ImageIcon(img1url);
+                            Image image = img.getImage(); // transform it
+                            Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+                            _img.setIcon(new ImageIcon(newimg));
 
-            }
+
+                            // Add _img to your Swing UI component as needed
+                        } else {
+                            System.err.println("Image not found: " + new Orange().getImg());
+                        }
+                    }
         });
 
 

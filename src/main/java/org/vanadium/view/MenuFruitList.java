@@ -1,7 +1,6 @@
 package org.vanadium.view;
 
 import org.vanadium.controler.ControllerPopMenuList;
-import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
 
@@ -13,11 +12,6 @@ public class MenuFruitList extends JPopupMenu {
 
     private ControllerPopMenuList c;
 
-    public enum MenuType {
-        DELETE, MODIFY, BOYCOTTE
-    }
-
-
     public MenuFruitList() {
         deleteItem = new JMenuItem("Supprimer");
         modifyItem = new JMenuItem("Modifier");
@@ -27,7 +21,7 @@ public class MenuFruitList extends JPopupMenu {
         add(boycotteItem);
     }
 
-    public void setEnableMenu(MenuType type,boolean disable) {
+    public void setEnableMenu(MenuType type, boolean disable) {
         switch (type) {
             case DELETE -> deleteItem.setEnabled(disable);
             case MODIFY -> modifyItem.setEnabled(disable);
@@ -48,5 +42,9 @@ public class MenuFruitList extends JPopupMenu {
         deleteItem.addActionListener(c);
         modifyItem.addActionListener(c);
         boycotteItem.addActionListener(c);
+    }
+
+    public enum MenuType {
+        DELETE, MODIFY, BOYCOTTE
     }
 }

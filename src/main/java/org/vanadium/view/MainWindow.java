@@ -9,8 +9,8 @@ import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.controler.ControllerPopMenuList;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.interfaces.VueG;
+import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.model.panier.Panier;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -31,6 +31,8 @@ public class MainWindow extends JFrame implements VueG {
     private JButton dec;
     private JLabel nb_fruits;
     private JLabel prix_total;
+
+    private JLabel contenant_size;
 
     private JList list;
 
@@ -76,12 +78,11 @@ public class MainWindow extends JFrame implements VueG {
                 if (evt.getButton() == java.awt.event.MouseEvent.BUTTON3) {
                     MenuFruitList menu = new MenuFruitList();
                     menu.addControleur(new ControllerPopMenuList(list, c.getModele()));
-                    if(list.getSelectedValuesList().size() > 1){
+                    if (list.getSelectedValuesList().size() > 1) {
                         menu.setEnableMenu(MenuFruitList.MenuType.BOYCOTTE, false);
                         menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
-                    }
-                    else{
-                        if(list.getSelectedValuesList().isEmpty()){
+                    } else {
+                        if (list.getSelectedValuesList().isEmpty()) {
                             menu.setEnableMenu(MenuFruitList.MenuType.DELETE, false);
                             menu.setEnableMenu(MenuFruitList.MenuType.MODIFY, false);
                         }
@@ -90,16 +91,16 @@ public class MainWindow extends JFrame implements VueG {
                 }
             }
         });
-
+        contenant_size.setText(c.getModele() + "");
     }
 
     @Override
-    public void update(Observable m, Object panier) {     //This method is called whenever the observed object is changed
-        prix_total.setText(((Panier) panier).getPrixTotal() + "€");
-        nb_fruits.setText(((Panier) panier).getFruits().size() + "");
+    public void update(Observable m, Object contenant) {     //This method is called whenever the observed object is changed
+        prix_total.setText(((ContenantFruitAbstract) contenant).getPrixTotal() + "€");
+        nb_fruits.setText(((ContenantFruitAbstract) contenant).getFruits().size() + "");
         ArrayList<FruitItem> fruits = new ArrayList<>();
-        for (Fruit f : ((Panier) panier).getFruits().keySet()) {
-            fruits.add(new FruitItem(f, ((Panier) panier).getFruits().get(f)));
+        for (Fruit f : ((ContenantFruitAbstract) contenant).getFruits().keySet()) {
+            fruits.add(new FruitItem(f, ((ContenantFruitAbstract) contenant).getFruits().get(f)));
         }
         list.setListData(fruits.toArray());
     }
@@ -131,10 +132,11 @@ public class MainWindow extends JFrame implements VueG {
 
     private void createCentralPan() {
         JPanel pan = new JPanel();
-        pan.setLayout(new GridLayout(2, 2));
+        pan.setLayout(new GridLayout(3, 2));
         pan.setBorder(BorderFactory.createTitledBorder("Panier"));
         prix_total = new JLabel("0€");
         nb_fruits = new JLabel("0");
+        contenant_size = new JLabel("0");
 
         JLabel prix_total_label = new JLabel("Prix total : ");
 
@@ -145,6 +147,11 @@ public class MainWindow extends JFrame implements VueG {
 
         pan.add(nb_fruits_label);
         pan.add(nb_fruits);
+
+        JLabel contenant_size_label = new JLabel("Taille du contenant : ");
+
+        pan.add(contenant_size_label);
+        pan.add(contenant_size);
 
         add(pan, BorderLayout.CENTER);
     }

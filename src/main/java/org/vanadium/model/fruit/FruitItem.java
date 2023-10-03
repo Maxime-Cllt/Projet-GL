@@ -35,6 +35,6 @@ public class FruitItem {
     }
 
     public String toString() {
-        return round(quantity,2) + " kg de " + fruit.toString();
+        return round(quantity, 2) + " kg de " + fruit.toString();
     }
 }
