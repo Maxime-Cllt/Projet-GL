@@ -2,7 +2,7 @@ name: "Release"
 
 on:
   push:
-    branches: [ "release" ]
+    branches: [ "release-test" ]
 
 jobs:
   pre-release:
@@ -23,11 +23,15 @@ jobs:
         id: PR
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
+
+      - name: Set env var
+        run: "export RELEASE_VER=${{ steps.PR.outputs.pr_title }}"
+
       - name: Build with Maven
         run: xvfb-run mvn -B compile --file pom.xml
 
       - name: Jar with Maven
-        run: "mvn -B jar:jar -Djar.finalName=Projet-GL-${{ steps.PR.outputs.pr_title }} --file pom.xml"
+        run: "mvn -B jar:jar --file pom.xml"
 
       - uses: marvinpinto/action-automatic-releases@latest
         with:
