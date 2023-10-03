@@ -1,4 +1,3 @@
----
 name: "Release"
 
 on:
@@ -28,7 +27,8 @@ jobs:
         run: xvfb-run mvn -B compile --file pom.xml
 
       - name: Jar with Maven
-        run: "mvn -B jar:jar -DfinalName=Projet-GL-${{ steps.PR.outputs.pr_title }} --file pom.xml"
+        run: "mvn -B jar:jar -Djar.finalName=Projet-GL-${{ steps.PR.outputs.pr_title }} --file pom.xml"
+
 
       - uses: marvinpinto/action-automatic-releases@latest
         with:
