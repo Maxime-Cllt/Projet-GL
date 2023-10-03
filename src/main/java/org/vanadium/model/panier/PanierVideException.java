@@ -7,7 +7,7 @@ package org.vanadium.model.panier;
  * @author Rémy BARRANCO
  * @author Julie PRIGENT
  */
-public class PanierVideException extends Exception {
+public class PanierVideException extends RuntimeException {
 
     /**
      * @brief Constructeur de l'exception PanierVideException sans paramètres

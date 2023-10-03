@@ -7,7 +7,7 @@ package org.vanadium.model.panier;
  * @author Rémy BARRANCO
  * @author Julie PRIGENT
  */
-public class PanierPleinException extends Exception {
+public class PanierPleinException extends RuntimeException {
 
     /**
      * @brief Constructeur de l'exception PanierPleinException sans paramètres

@@ -40,7 +40,7 @@ public class VueConsole implements Observer {
     }
 
     public void update(Observable m, Object panier) {   //This method is called whenever the observed object is changed
-        trace = "Nouvelle valeur : " + ((Panier) panier).getTaillePanier();
+        trace = "Nouvelle valeur : " + ((Panier) panier).getTailleContenant();
 
         System.out.println(trace);
     }

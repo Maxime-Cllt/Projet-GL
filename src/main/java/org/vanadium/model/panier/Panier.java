@@ -2,7 +2,10 @@ package org.vanadium.model.panier;
 
 import org.vanadium.interfaces.Fruit;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Observable;
+import org.vanadium.interfaces.ContenantFruit;
 
 import static org.vanadium.model.Utils.round;
 
@@ -14,7 +17,7 @@ import static org.vanadium.model.Utils.round;
  * @author Rémy BARRANCO
  * @author Julie PRIGENT
  */
-public class Panier extends Observable {
+public class Panier extends Observable implements ContenantFruit{
     private final int contenanceMax;
     private HashMap<Fruit, Double> fruits;
 
@@ -42,6 +45,7 @@ public class Panier extends Observable {
      * @return HashMap<Fruit, Double>
      * @brief Méthode qui permet de récupérer les fruits du panier
      */
+    @Override
     public HashMap<Fruit, Double> getFruits() {
         return fruits;
     }
@@ -50,6 +54,7 @@ public class Panier extends Observable {
      * @param fruits
      * @brief Méthode qui permet de modifier les fruits du panier
      */
+    @Override
     public void setFruits(HashMap<Fruit, Double> fruits) {
         this.fruits = fruits;
     }
@@ -58,7 +63,8 @@ public class Panier extends Observable {
      * @return int
      * @brief Méthode qui permet de récupérer la taille du panier
      */
-    public int getTaillePanier() {
+    @Override
+    public int getTailleContenant() {
         return fruits.size();
     }
 
@@ -75,6 +81,7 @@ public class Panier extends Observable {
      * @return Fruit
      * @brief Méthode qui permet de récupérer un fruit du panier
      */
+    @Override
     public Fruit getFruit(int i) {
         return (Fruit) fruits.keySet().toArray()[i];
     }
@@ -83,6 +90,7 @@ public class Panier extends Observable {
      * @return boolean
      * @brief Méthode qui permet de savoir si le panier est vide
      */
+    
     public boolean estVide() {
         return fruits.isEmpty();
     }
@@ -100,6 +108,7 @@ public class Panier extends Observable {
      * @throws PanierPleinException
      * @brief Méthode qui permet d'ajouter un fruit dans le panier
      */
+    @Override
     public void ajout(Map.Entry<Fruit, Double> fruitQuantity) throws PanierPleinException {
         if (fruits.containsKey(fruitQuantity.getKey())) {
             return;
@@ -122,6 +131,7 @@ public class Panier extends Observable {
      * @throws PanierVideException
      * @brief Méthode qui permet de retirer un fruit du panier
      */
+    @Override
     public void retrait() throws PanierVideException {
         if (fruits.isEmpty()) {
             throw new PanierVideException();
@@ -135,6 +145,8 @@ public class Panier extends Observable {
      * @param o
      * @brief Méthode qui permet de retirer un fruit du panier
      */
+    
+    @Override
     public void retrait(Fruit o) {
         fruits.remove(o);
         setChanged();
@@ -145,6 +157,7 @@ public class Panier extends Observable {
      * @return double
      * @brief Méthode qui permet de calculer le prix du panier
      */
+    @Override
     public double getPrixTotal() {
         double prix = 0;
         for (Map.Entry<Fruit, Double> fruitQuantity : fruits.entrySet()) {
@@ -157,6 +170,7 @@ public class Panier extends Observable {
      * @param origine
      * @brief Méthode qui permet de boycotter un fruit
      */
+    @Override
     public void boycotteOrigine(Fruit.Pays origine) {
         fruits.entrySet().removeIf(item -> item.getKey().getOrigine() == origine);
         setChanged();
