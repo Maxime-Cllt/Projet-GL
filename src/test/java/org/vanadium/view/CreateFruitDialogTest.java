@@ -14,6 +14,6 @@ public class CreateFruitDialogTest {
         CreateFruitDialog dialog = new CreateFruitDialog();
         JButton button = (JButton) TestUtils.getChildNamed(dialog, "Ajouter");
         button.doClick();
-        assertTrue(dialog.getFruit().getKey() instanceof Fruit);
+        assertTrue(dialog.getFruitItem().getKey() instanceof Fruit);
     }
 }
