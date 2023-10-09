@@ -1,6 +1,6 @@
 package org.vanadium.view;
 
-import org.vanadium.factories.Factory;
+import org.vanadium.factories.FactoryFruit;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.FruitItem;
 import org.vanadium.model.fruit.Orange;
@@ -12,9 +12,8 @@ import java.awt.event.ItemEvent;
 import java.net.URL;
 
 public class ModifyFruitDialog extends JDialog {
-    private FruitItem _new_fruit;
     private final FruitItem _old_fruit;
-
+    private FruitItem _new_fruit;
     private JComboBox<Fruit.Pays> _pays;
     private JComboBox<Fruit.Type> _type;
     private JSpinner _prix;
@@ -107,26 +106,26 @@ public class ModifyFruitDialog extends JDialog {
 
         // change img when type change
         _type.addItemListener(e -> {
-                    if (e.getStateChange() == ItemEvent.SELECTED) {
-                        URL img1url = getClass().getClassLoader().getResource(Fruit.imgType.get(_type.getSelectedItem()));
-                        System.out.println(Fruit.imgType.get(_type.getSelectedItem()));
-                        if (img1url != null) {
-                            ImageIcon img = new ImageIcon(img1url);
-                            Image image = img.getImage(); // transform it
-                            Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-                            _img.setIcon(new ImageIcon(newimg));
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                URL img1url = getClass().getClassLoader().getResource(Fruit.imgType.get(_type.getSelectedItem()));
+                System.out.println(Fruit.imgType.get(_type.getSelectedItem()));
+                if (img1url != null) {
+                    ImageIcon img = new ImageIcon(img1url);
+                    Image image = img.getImage(); // transform it
+                    Image newimg = image.getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+                    _img.setIcon(new ImageIcon(newimg));
 
 
-                            // Add _img to your Swing UI component as needed
-                        } else {
-                            System.err.println("Image not found: " + new Orange().getImg());
-                        }
-                    }
+                    // Add _img to your Swing UI component as needed
+                } else {
+                    System.err.println("Image not found: " + new Orange().getImg());
+                }
+            }
         });
 
 
         _ok.addActionListener(e -> {
-            Fruit f = Factory.createFruit((Fruit.Type) _type.getSelectedItem());
+            Fruit f = FactoryFruit.createFruit((Fruit.Type) _type.getSelectedItem());
             f.setOrigine((Fruit.Pays) _pays.getSelectedItem());
             f.setPrix((double) _prix.getValue());
             _new_fruit = new FruitItem(f, (double) _quantity.getValue());

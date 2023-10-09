@@ -1,6 +1,6 @@
 package org.vanadium.view;
 
-import org.vanadium.factories.Factory;
+import org.vanadium.factories.FactoryContenant;
 import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.model.ContenantFruitAbstract;
 
@@ -12,7 +12,7 @@ public class SelectContenantDialog extends JDialog {
 
 
     public SelectContenantDialog() {
-        super(new Frame(),"Choisissez votre contenant", true);
+        super(new Frame(), "Choisissez votre contenant", true);
         this.setSize(300, 150);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -20,7 +20,7 @@ public class SelectContenantDialog extends JDialog {
         this.initComponent();
     }
 
-    private void initComponent(){
+    private void initComponent() {
         JPanel pan = new JPanel();
         pan.setBorder(BorderFactory.createTitledBorder("Veuillez choisir un contenant"));
         pan.setLayout(new BoxLayout(pan, BoxLayout.Y_AXIS));
@@ -38,7 +38,7 @@ public class SelectContenantDialog extends JDialog {
 
 
         okBouton.addActionListener(e -> {
-            contenantFruitAbstract = Factory.createContenantFruit((ContenantFruit.TypeContenant) contenant.getSelectedItem(), 10);
+            contenantFruitAbstract = FactoryContenant.createContenantFruit((ContenantFruit.TypeContenant) contenant.getSelectedItem(), 10);
             dispose();
         });
     }

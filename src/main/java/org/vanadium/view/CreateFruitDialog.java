@@ -1,6 +1,6 @@
 package org.vanadium.view;
 
-import org.vanadium.factories.Factory;
+import org.vanadium.factories.FactoryFruit;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.Orange;
 
@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.net.URL;
 import java.util.Map;
-import java.util.Objects;
 
 public class CreateFruitDialog extends JDialog {
     private Fruit _fruit;
@@ -55,7 +54,6 @@ public class CreateFruitDialog extends JDialog {
         } else {
             System.err.println("Image not found: " + new Orange().getImg());
         }
-
 
 
         // for type, pays, and prix add jlabel
@@ -118,7 +116,7 @@ public class CreateFruitDialog extends JDialog {
 
 
         _ok.addActionListener(e -> {
-            _fruit = Factory.createFruit((Fruit.Type) _type.getSelectedItem());
+            _fruit = FactoryFruit.createFruit((Fruit.Type) _type.getSelectedItem());
             _fruit.setOrigine((Fruit.Pays) _pays.getSelectedItem());
             _fruit.setPrix((double) _prix.getValue());
             dispose();
