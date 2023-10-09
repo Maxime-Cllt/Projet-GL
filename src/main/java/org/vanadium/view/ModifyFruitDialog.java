@@ -39,15 +39,20 @@ public class ModifyFruitDialog extends JDialog {
         pan.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         _pays = new JComboBox<>(Fruit.Pays.values());
+        _pays.setName("Pays");
         _pays.setSelectedItem(_old_fruit.getFruit().getOrigine());
         _type = new JComboBox<>(Fruit.Type.values());
+        _type.setName("Type");
         _type.setSelectedItem(Fruit.Type.getType(_old_fruit.getFruit()));
         _prix = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 100.0, 0.1));
+        _prix.setName("Prix");
         _prix.setValue(_old_fruit.getFruit().getPrix());
         _quantity = new JSpinner(new SpinnerNumberModel(1, 0.1, 10, 0.1));
+        _quantity.setName("Quantité");
         _quantity.setValue(_old_fruit.getQuantity());
 
         _ok = new JButton("Modifier");
+        _ok.setName("Modifier");
 
         // icon
         URL imageURL = getClass().getClassLoader().getResource(new Orange().getImg());
