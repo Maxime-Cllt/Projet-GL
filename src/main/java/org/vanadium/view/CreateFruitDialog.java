@@ -41,7 +41,7 @@ public class CreateFruitDialog extends JDialog {
         _ok = new JButton("Ajouter");
         _ok.setName("Ajouter");
 
-        // icon
+//         icon
         URL imageURL = getClass().getClassLoader().getResource(new Orange().getImg());
 
         if (imageURL != null) {
@@ -128,7 +128,10 @@ public class CreateFruitDialog extends JDialog {
      * @return Map.Entry<Fruit, Double>
      * @brief Méthode qui permet de récupérer le fruit créé
      */
-    public Map.Entry<Fruit, Double> getFruit() {
+    public Map.Entry<Fruit, Double> getFruitItem() {
+        if (_fruit == null) {
+            return null;
+        }
         return Map.entry(_fruit, (double) _quantity.getValue());
     }
 }
