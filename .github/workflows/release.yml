@@ -37,8 +37,8 @@ jobs:
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.RELEASE_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
+          automatic_release_tag: "${{ steps.PR.outputs.pr_title }}"
+          prerelease: false
           title: "Build ${{ steps.PR.outputs.pr_title }}"
           files: |
             ./target/*.jar
