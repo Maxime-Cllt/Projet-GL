@@ -12,8 +12,8 @@ import java.util.Map;
 
 public class ControllerPopMenuList implements ActionListener {
 
-    private ContenantFruitAbstract m;
     private final JList list;
+    private ContenantFruitAbstract m;
 
     public ControllerPopMenuList(JList list, ContenantFruitAbstract m) {
         this.list = list;

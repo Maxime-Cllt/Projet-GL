@@ -1,10 +1,9 @@
 package org.vanadium.factories;
 
-import org.vanadium.interfaces.*;
+import org.vanadium.interfaces.ContenantFruit;
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.Jus.Jus;
 import org.vanadium.model.Macedoine.Macedoine;
-import org.vanadium.model.fruit.*;
 import org.vanadium.model.panier.Panier;
 
 
@@ -16,23 +15,8 @@ import org.vanadium.model.panier.Panier;
  * @author Julie PRIGENT
  */
 
-public class Factory {
+public class FactoryContenant {
 
-
-    /**
-     * @param type Type du fruit à créer
-     * @return Fruit
-     * @brief Méthode qui permet de créer un fruit en fonction de son type (orange, banane, pomme) et de le retourner (pattern factory)
-     */
-    public static Fruit createFruit(Fruit.Type type) {
-
-        return switch (type) {
-            case ORANGE -> new Orange();
-            case BANANE -> new Banane();
-            case POMME -> new Pomme();
-            default -> new Inconnue();
-        };
-    }
 
     public static ContenantFruitAbstract createContenantFruit(ContenantFruit.TypeContenant type, int contenanceMax) {
 
