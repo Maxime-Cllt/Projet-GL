@@ -32,7 +32,9 @@ public class ControleurMainWindow implements ActionListener {
             if (((Component) e.getSource()).getName().equals("Plus")) {
                 CreateFruitDialog dialog = new CreateFruitDialog();
                 dialog.setVisible(true);
-                m.ajout(dialog.getFruit());
+                if (dialog.getFruitItem() != null) {
+                    m.ajout(dialog.getFruitItem());
+                }
             } else {
                 if (selectedFruits.size() > 0) {
                     for (Fruit fruit : selectedFruits) {
