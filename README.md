@@ -1,9 +1,9 @@
 # Application de Gestion d'Achat de Fruits
 
-Une application de gestion d'achat de fruits en Java Swing, qui permet aux utilisateurs de sélectionner des fruits à acheter et de les ajouter à un panier.
+Une application de gestion d'achat de fruits en Java Swing, qui permet aux utilisateurs de sélectionner des fruits à
+acheter et de les ajouter à un panier.
 
 <h2>Table des matières :</h2>
-
 
 - [Aperçu](#aperçu)
 - [Fonctionnalités](#fonctionnalités)
@@ -14,8 +14,10 @@ Une application de gestion d'achat de fruits en Java Swing, qui permet aux utili
 
 <h2 id="aperçu">Aperçu :</h2>
 
-Cette application est conçue pour fournir une interface utilisateur graphique simple pour acheter des fruits. Les utilisateurs peuvent parcourir une liste de fruits, sélectionner ceux qu'ils souhaitent acheter, spécifier la quantité et les ajouter à un panier. L'application affiche ensuite un récapitulatif des fruits dans le panier, le total des achats, et permet de finaliser l'achat.
-
+Cette application est conçue pour fournir une interface utilisateur graphique simple pour acheter des fruits. Les
+utilisateurs peuvent parcourir une liste de fruits, sélectionner ceux qu'ils souhaitent acheter, spécifier la quantité
+et les ajouter à un panier. L'application affiche ensuite un récapitulatif des fruits dans le panier, le total des
+achats, et permet de finaliser l'achat.
 
 <h2 id="fonctionnalités">Fonctionnalités :</h2>
 
@@ -28,22 +30,38 @@ Cette application est conçue pour fournir une interface utilisateur graphique s
 <h2 id="captures-décran">Captures d'écran :</h2>
 
 
-![Capture d'écran 1](screenshots/screenshot1.png)
-
-![Capture d'écran 2](screenshots/screenshot2.png)
-
-<h2 id="installation">Installation :</h2>
 
 
-1. Clonez ce dépôt sur votre machine locale :
+<p align="center">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Choix%20Panier.png" alt="Panier"  width="500px%" height="auto">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Home.png" alt="IHM"  width="500px" height="auto">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Ajout%20Fruit.png" alt="Fruit"  width="500px" height="auto">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/IHM%20MaJ.png" alt="IHM 2"  width="500px" height="auto">
+</p>
+
+
+
+
+<h2 id="installation">Execution :</h2>
+
+1. Télécharger le Build de la dernière version dans la section "release" et lancer la commande suivante : 
 
 ```shell
-git clone https://github.com/Maxime-Cllt/Projet-GL.git
+java -jar [nom_du_fichier.jar]
 ```
 
 <h2 id="documentation">Documentation :</h2>
 
-La documentation du projet est disponible à la racine du projet, dans le dossier `documentation/` pour la documentation du code et `rapport/` pour les diagrammes UML.
+Le rapport de cette application est disponible dans le dossier `rapport/`
 
 <h2 id="contributions">Contributions :</h2>
 
