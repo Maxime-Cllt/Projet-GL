@@ -8,8 +8,8 @@ package org.vanadium;
 import org.vanadium.controler.ControleurMainWindow;
 import org.vanadium.interfaces.VueG;
 import org.vanadium.model.ContenantFruitAbstract;
-import org.vanadium.model.Macedoine.Macedoine;
 import org.vanadium.view.MainWindow;
+import org.vanadium.view.SelectContenantDialog;
 import org.vanadium.view.VueConsole;
 
 /**
@@ -24,9 +24,13 @@ public class App {
     private final ControleurMainWindow controleur;
 
     public App() {
+
+        SelectContenantDialog selectContenantDialog = new SelectContenantDialog();
+        selectContenantDialog.setVisible(true);
+
         vueg = new MainWindow();
         controleur = new ControleurMainWindow();
-        ContenantFruitAbstract modele = new Macedoine();
+        ContenantFruitAbstract modele = selectContenantDialog.getContenantFruitAbstract();
         VueConsole vuec = new VueConsole();
 
         controleur.setModele(modele);

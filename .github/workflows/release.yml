@@ -33,6 +33,7 @@ jobs:
       - name: Rename file
         run: "mv target/Projet-GL-1.0-SNAPSHOT.jar target/Projet-GL-${{ steps.PR.outputs.pr_title }}.jar"
 
+
       - uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.RELEASE_TOKEN }}"

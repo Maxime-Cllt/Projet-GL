@@ -15,7 +15,7 @@ import org.vanadium.model.fruit.Pomme;
  * @author Julie PRIGENT
  */
 
-public class Factory {
+public class FactoryFruit {
 
 
     /**
@@ -29,10 +29,7 @@ public class Factory {
             case ORANGE -> new Orange();
             case BANANE -> new Banane();
             case POMME -> new Pomme();
-            case INCONNU -> new Inconnue();
             default -> new Inconnue();
         };
-
     }
-
 }
