@@ -4,14 +4,17 @@
  */
 package org.vanadium.model.Macedoine;
 
+import java.util.ArrayList;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.ContenantFruitAbstract;
 import org.vanadium.model.panier.PanierVideException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.vanadium.model.Utils.round;
+import org.vanadium.model.fruit.Inconnue;
 
 /**
  * @author Maxime Colliat
@@ -21,14 +24,28 @@ import static org.vanadium.model.Utils.round;
  * @author Julie PRIGENT
  */
 
-public class Macedoine extends ContenantFruitAbstract {
+public class Macedoine extends ContenantFruitAbstract implements Fruit{
     private HashMap<Fruit, Double> fruits;
+    private double prix;
+    private Pays origine;
 
     /**
      * @brief Constructeur de la classe Macedoine qui permet d'initialiser les attributs
      */
     public Macedoine() {
         fruits = new HashMap<>();
+        origine = Fruit.Pays.INCONNU;
+
+    }
+    
+    public Macedoine(double prix, Pays origine) {
+        fruits = new HashMap<>();
+        if(prix<0)
+            this.prix = -prix;
+        else
+            this.prix = prix;
+        
+        this.origine = origine;
 
     }
 
@@ -199,6 +216,47 @@ public class Macedoine extends ContenantFruitAbstract {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean isSeedless() {
+        for (Map.Entry<Fruit, Double> entry :fruits.entrySet()){
+            Fruit fruit = entry.getKey();
+            boolean checkIfSeedless = fruit.isSeedless();
+            if(!checkIfSeedless){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public double getPrix() {
+        if(prix>0)
+            return this.prix;
+        else
+            return getPrixTotal();
+    }
+
+    @Override
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    @Override
+    public Pays getOrigine() {
+        return origine;
+    }
+
+    @Override
+    public void setOrigine(Pays origine) {
+        this.origine = origine;
+    }
+
+    @Override
+    public String getImg() {
+        return System.getProperty("user.dir") + "/ressources/" + Fruit.imgClass.get(Inconnue.class);
+
     }
 
 
