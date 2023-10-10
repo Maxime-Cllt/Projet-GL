@@ -92,7 +92,6 @@ public class Macedoine extends ContenantFruitAbstract {
 
     /**
      * @param fruitQuantity
-     * @throws PanierPleinException
      * @brief Méthode qui permet d'ajouter un fruit dans la macedoine
      */
     @Override

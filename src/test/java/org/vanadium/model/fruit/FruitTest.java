@@ -13,6 +13,7 @@ class FruitTest {
         assertFalse(new Banane().isSeedless());
         assertFalse(new Orange().isSeedless());
         assertFalse(new Pomme().isSeedless());
+        assertFalse(new Inconnue().isSeedless());
     }
 
     @Test
@@ -20,12 +21,15 @@ class FruitTest {
         Banane banane = new Banane();
         Orange orange = new Orange();
         Pomme pomme = new Pomme();
+        Inconnue inconnue = new Inconnue();
         banane.setPrix(1.0);
         orange.setPrix(1.5);
         pomme.setPrix(2.0);
+        inconnue.setPrix(2.0);
         assertEquals(1.0, banane.getPrix());
         assertEquals(1.5, orange.getPrix());
         assertEquals(2.0, pomme.getPrix());
+        assertEquals(2.0, inconnue.getPrix());
     }
 
     @Test
@@ -33,12 +37,15 @@ class FruitTest {
         Banane banane = new Banane();
         Orange orange = new Orange();
         Pomme pomme = new Pomme();
+        Inconnue inconnue = new Inconnue();
         banane.setOrigine(Fruit.Pays.FRANCE);
         orange.setOrigine(Fruit.Pays.ESPAGNE);
         pomme.setOrigine(Fruit.Pays.PORTUGAL);
+        inconnue.setOrigine(Fruit.Pays.INCONNU);
         assertEquals(Fruit.Pays.FRANCE, banane.getOrigine());
         assertEquals(Fruit.Pays.ESPAGNE, orange.getOrigine());
         assertEquals(Fruit.Pays.PORTUGAL, pomme.getOrigine());
+        assertEquals(Fruit.Pays.INCONNU, inconnue.getOrigine());
     }
 
     @Test
@@ -46,12 +53,15 @@ class FruitTest {
         Banane banane = new Banane();
         Orange orange = new Orange();
         Pomme pomme = new Pomme();
+        Inconnue inconnue = new Inconnue();
         banane.setOrigine(Fruit.Pays.FRANCE);
         orange.setOrigine(Fruit.Pays.ESPAGNE);
         pomme.setOrigine(Fruit.Pays.PORTUGAL);
+        inconnue.setOrigine(Fruit.Pays.INCONNU);
         assertEquals(Fruit.Pays.FRANCE, banane.getOrigine());
         assertEquals(Fruit.Pays.ESPAGNE, orange.getOrigine());
         assertEquals(Fruit.Pays.PORTUGAL, pomme.getOrigine());
+        assertEquals(Fruit.Pays.INCONNU, inconnue.getOrigine());
     }
 
     @Test
@@ -59,12 +69,15 @@ class FruitTest {
         Banane banane = new Banane();
         Orange orange = new Orange();
         Pomme pomme = new Pomme();
+        Inconnue inconnue = new Inconnue();
         banane.setOrigine(Fruit.Pays.FRANCE);
         orange.setOrigine(Fruit.Pays.ESPAGNE);
         pomme.setOrigine(Fruit.Pays.PORTUGAL);
+        inconnue.setOrigine(Fruit.Pays.INCONNU);
         assertEquals(Fruit.Pays.FRANCE, banane.getOrigine());
         assertEquals(Fruit.Pays.ESPAGNE, orange.getOrigine());
         assertEquals(Fruit.Pays.PORTUGAL, pomme.getOrigine());
+        assertEquals(Fruit.Pays.INCONNU, inconnue.getOrigine());
     }
 
     @Test
@@ -72,12 +85,15 @@ class FruitTest {
         Banane banane = new Banane();
         Orange orange = new Orange();
         Pomme pomme = new Pomme();
+        Inconnue inconnue = new Inconnue();
         banane.setOrigine(Fruit.Pays.FRANCE);
         orange.setOrigine(Fruit.Pays.ESPAGNE);
         pomme.setOrigine(Fruit.Pays.PORTUGAL);
+        inconnue.setOrigine(Fruit.Pays.INCONNU);
         assertEquals(Fruit.Pays.FRANCE, banane.getOrigine());
         assertEquals(Fruit.Pays.ESPAGNE, orange.getOrigine());
         assertEquals(Fruit.Pays.PORTUGAL, pomme.getOrigine());
+        assertEquals(Fruit.Pays.INCONNU, inconnue.getOrigine());
     }
 
 }
