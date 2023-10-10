@@ -26,10 +26,13 @@ public class SelectContenantDialog extends JDialog {
         pan.setLayout(new BoxLayout(pan, BoxLayout.Y_AXIS));
 
         JComboBox<ContenantFruit.TypeContenant> contenant = new JComboBox<>(ContenantFruit.TypeContenant.values());
+        contenant.setName("Contenant");
+
         pan.add(contenant);
 
         JPanel control = new JPanel();
         JButton okBouton = new JButton("OK");
+        okBouton.setName("OK");
 
         control.add(okBouton);
 

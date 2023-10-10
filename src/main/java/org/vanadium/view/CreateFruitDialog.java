@@ -35,9 +35,13 @@ public class CreateFruitDialog extends JDialog {
         pan.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         _pays = new JComboBox<>(Fruit.Pays.values());
+        _pays.setName("Pays");
         _type = new JComboBox<>(Fruit.Type.values());
+        _type.setName("Type");
         _prix = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 100.0, 0.1));
+        _prix.setName("Prix");
         _quantity = new JSpinner(new SpinnerNumberModel(1, 0.1, 10, 0.1));
+        _quantity.setName("Quantité");
         _ok = new JButton("Ajouter");
         _ok.setName("Ajouter");
 

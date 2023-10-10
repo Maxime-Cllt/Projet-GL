@@ -9,13 +9,12 @@ import org.vanadium.model.fruit.Pomme;
 
 import javax.swing.*;
 
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ModifyFruitDialogTest {
     @Test
-    void addFruit() {
+    void modifyFruit() {
         FruitItem item = new FruitItem(new Orange(), 1.0);
         ModifyFruitDialog dialog = new ModifyFruitDialog(item);
 
