@@ -33,19 +33,19 @@ achats, et permet de finaliser l'achat.
 
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Choix%20Panier.png" alt="Panier"  width="450px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/ihm/choix_panier.png" alt="Panier"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Home.png" alt="IHM"  width="450px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/ihm/ihm.png" alt="IHM"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Ajout%20Fruit.png" alt="Fruit"  width="450px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/ihm/ajout_fruit.png" alt="Fruit"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/IHM%20MaJ.png" alt="IHM 2"  width="450px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/ihm/ihm2.png" alt="IHM 2"  width="450px" height="auto">
 </p>
 
 
