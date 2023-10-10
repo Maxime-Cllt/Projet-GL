@@ -57,11 +57,24 @@ public class MainWindow extends JFrame implements VueG {
         this.pack();
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        MenuBar menuBar = new MenuBar(this);
+        setJMenuBar(menuBar);
+
     }
 
     public void addControleur(ControleurMainWindow c) {
+
+        if(getInc().getActionListeners().length > 0) {
+            getInc().removeActionListener(getInc().getActionListeners()[0]);
+            getDec().removeActionListener(getDec().getActionListeners()[0]);
+            list.removeListSelectionListener(list.getListSelectionListeners()[0]);
+            list.removeMouseListener(list.getMouseListeners()[0]);
+        }
+
         getInc().addActionListener(c);
         getDec().addActionListener(c);
+
         new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {

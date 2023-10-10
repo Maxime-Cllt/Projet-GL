@@ -6,4 +6,9 @@ import java.util.Observable;
 
 public abstract class ContenantFruitAbstract
         extends Observable implements ContenantFruit {
+
+    public void notifyObservers() {
+        setChanged();
+        super.notifyObservers(this);
+    }
 }
