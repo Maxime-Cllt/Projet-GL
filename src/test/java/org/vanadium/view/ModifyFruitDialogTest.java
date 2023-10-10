@@ -9,7 +9,6 @@ import org.vanadium.model.fruit.Pomme;
 
 import javax.swing.*;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ModifyFruitDialogTest {
