@@ -33,19 +33,19 @@ achats, et permet de finaliser l'achat.
 
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Choix%20Panier.png" alt="Panier"  width="500px%" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Choix%20Panier.png" alt="Panier"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Home.png" alt="IHM"  width="500px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Home.png" alt="IHM"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Ajout%20Fruit.png" alt="Fruit"  width="500px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/Ajout%20Fruit.png" alt="Fruit"  width="450px" height="auto">
 </p>
 
 <p align="center">
-    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/IHM%20MaJ.png" alt="IHM 2"  width="500px" height="auto">
+    <img src="https://github.com/Maxime-Cllt/Projet-GL/blob/main/rapport/screenshot/IHM%20MaJ.png" alt="IHM 2"  width="450px" height="auto">
 </p>
 
 
@@ -53,10 +53,10 @@ achats, et permet de finaliser l'achat.
 
 <h2 id="installation">Execution :</h2>
 
-1. Télécharger le Build de la dernière version dans la section "release" et lancer la commande suivante : 
+1. Télécharger le Build de la dernière version dans la section "release" et lancer la commande suivante :
 
 ```shell
-java -jar [nom_du_fichier.jar]
+java -jar [nom_du_fichier].jar
 ```
 
 <h2 id="documentation">Documentation :</h2>
