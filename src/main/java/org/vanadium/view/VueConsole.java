@@ -39,9 +39,13 @@ public class VueConsole implements Observer {
         this.trace = trace;
     }
 
+    /**
+     * @param m         the observable object.
+     * @param contenant the object argument.
+     * @brief This method is called whenever the observed object is changed.
+     */
     public void update(Observable m, Object contenant) {   //This method is called whenever the observed object is changed
         trace = "Nouvelle valeur : " + ((ContenantFruitAbstract) contenant).getTailleContenant();
-
         System.out.println(trace);
     }
 }
