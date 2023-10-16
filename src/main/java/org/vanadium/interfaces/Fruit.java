@@ -37,6 +37,7 @@ public interface Fruit {
                     Type.ORANGE, "orange.png",
                     Type.BANANE, "bananes.png",
                     Type.POMME, "pomme.png",
+                    Type.MACEDEOINE, "macedoine.png",
                     Type.INCONNU, "panier.png"
             )
     );
@@ -96,7 +97,9 @@ public interface Fruit {
         ORANGE("Orange"),
         BANANE("Banane"),
         POMME("Pomme"),
-        INCONNU("Inconnu");
+        INCONNU("Inconnu"),
+
+        MACEDEOINE("Macédoine");
 
         private String name = "";
 
@@ -113,6 +116,7 @@ public interface Fruit {
                 case "Orange" -> Type.ORANGE;
                 case "Banane" -> Type.BANANE;
                 case "Pomme" -> Type.POMME;
+                case "Macédoine" -> Type.MACEDEOINE;
                 default -> Type.INCONNU;
             };
         }
