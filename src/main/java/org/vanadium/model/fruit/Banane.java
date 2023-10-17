@@ -91,6 +91,6 @@ public class Banane implements Fruit {
      * @brief Indique si la banane a des pépins ou non
      */
     public boolean isSeedless() {  //predicat indiquant qu'une orange a des pepins
-        return false;
+        return true;
     }
 }
