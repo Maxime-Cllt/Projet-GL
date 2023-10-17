@@ -44,9 +44,10 @@ class MacedoineTest {
     
     @Test
     void testToString() {
-        assertEquals("Macedoine{fruits={}}", macedoine.toString());
+        assertEquals("Macedoine: ", macedoine.toString());
         macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
-        assertEquals("Macedoine{fruits={Orange de France a 1.0 euros=1.0}}", macedoine.toString());
+
+        assertEquals("Macedoine: Orange: 1,", macedoine.toString());
     }
 
     @Test

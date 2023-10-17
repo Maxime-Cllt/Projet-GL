@@ -9,15 +9,23 @@ import org.vanadium.interfaces.Fruit;
 import java.util.AbstractMap;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 @ExtendWith(MockitoExtension.class)
 public class JusTest {
+    
+    Jus jus;
+    
     @Mock
     Fruit fruit;
+    
+    @BeforeEach
+    void setup(){
+        jus = new Jus();
+    }
 
     @Test
     void getTailleContenant() {
-        Jus jus = new Jus();
         assertEquals(0, jus.getTailleContenant());
         jus.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, jus.getTailleContenant());
@@ -27,7 +35,6 @@ public class JusTest {
 
     @Test
     void estVide() {
-        Jus jus = new Jus();
         assertTrue(jus.estVide());
         jus.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertFalse(jus.estVide());
@@ -37,14 +44,12 @@ public class JusTest {
 
     @Test
     void ajout() {
-        Jus jus = new Jus();
         jus.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, jus.getTailleContenant());
     }
 
     @Test
     void retrait() {
-        Jus jus = new Jus();
         jus.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         jus.retrait(fruit);
         assertEquals(0, jus.getTailleContenant());
@@ -52,7 +57,6 @@ public class JusTest {
 
     @Test
     void jusVideException() {
-        Jus jus = new Jus();
         assertThrows(JusVideException.class, () -> jus.retrait());
     }
 }
