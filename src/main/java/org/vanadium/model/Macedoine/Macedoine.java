@@ -55,9 +55,23 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
      */
     @Override
     public String toString() {
-        return "Macedoine{" +
-                "fruits=" + fruits +
-                '}';
+        HashMap<String, Integer> fruit_list = new HashMap<String, Integer>();
+        
+        for (Fruit fruit : fruits.keySet()) {
+           String classe = fruit.getClass().getSimpleName();
+           fruit_list.put(classe, fruit_list.getOrDefault(classe, 0) + 1);
+        }
+        
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Macedoine: ");
+        
+        for (Map.Entry<String, Integer> entry : fruit_list.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            stringBuilder.append(key).append(": ").append(value).append(",");
+            
+        }
+            return stringBuilder.toString();
     }
 
 
@@ -182,6 +196,10 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
         notifyObservers(this);
     }
 
+     /**
+     * @brief Méthode qui permet d'obtenir le poids total du contenant
+     * * @return double
+     */
     @Override
     public double getPoidsTotal() {
         double poidsTotal = 0;
@@ -218,6 +236,10 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
         return false;
     }
 
+    /**
+     * @return boolean
+     * @brief Méthode qui indique si l'intégralité des fruits contenus sont sans pépins
+     */
     @Override
     public boolean isSeedless() {
         for (Map.Entry<Fruit, Double> entry :fruits.entrySet()){
@@ -230,6 +252,10 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
         return true;
     }
 
+    /**
+     * @return double
+     * @brief Méthode qui retourne le prix total de la macédoine
+     */
     @Override
     public double getPrix() {
         if(prix>0)
@@ -238,6 +264,7 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
             return getPrixTotal();
     }
 
+    
     @Override
     public void setPrix(double prix) {
         this.prix = prix;
