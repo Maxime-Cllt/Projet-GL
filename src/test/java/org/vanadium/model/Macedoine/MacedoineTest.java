@@ -97,6 +97,27 @@ class MacedoineTest {
         assertEquals(4, macedoine.getTailleContenant());
     }
 
+    @Test
+    void ajoutMacedoine() {
+        //1ere macedoine
+        Macedoine macedoine = new Macedoine();
+        assertEquals(0, macedoine.getTailleContenant());
+        Orange orange = new Orange();
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        assertEquals(1, macedoine.getTailleContenant());
+        
+        //2nd macedoine 
+        Macedoine macedoineDeMacedoine = new Macedoine();
+        assertEquals(0, macedoineDeMacedoine.getTailleContenant());
+        Banane banane = new Banane();
+        macedoineDeMacedoine.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
+        assertEquals(1, macedoineDeMacedoine.getTailleContenant());
+    
+        //Ajout de la 1ere macedoine à la seconde
+        macedoineDeMacedoine.ajout(new AbstractMap.SimpleEntry<>(macedoine, 3.0));
+        assertEquals(2, macedoineDeMacedoine.getTailleContenant());
+        assertEquals(macedoineDeMacedoine.getFruit(0), macedoine);
+    }
 
     @Test
     void retrait() {
