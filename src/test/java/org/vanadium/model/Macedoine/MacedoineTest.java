@@ -189,4 +189,22 @@ class MacedoineTest {
         Macedoine macedoine = new Macedoine();
         assertThrows(MacedoineVideException.class, macedoine::retrait);
     }
+    
+    @Test
+    void isSeedlesstrue(){
+        Macedoine macedoine = new Macedoine();
+        Banane banane = new Banane();
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
+        assertEquals(Boolean.TRUE, macedoine.isSeedless());
+    }
+    
+    @Test
+    void isSeedlessFalse(){
+        Macedoine macedoine = new Macedoine();
+        Pomme pomme = new Pomme();
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
+        Orange orange = new Orange();
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        assertEquals(Boolean.FALSE, macedoine.isSeedless());
+    }
 }
