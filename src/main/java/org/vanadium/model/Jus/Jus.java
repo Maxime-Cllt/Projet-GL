@@ -34,11 +34,26 @@ public class Jus extends ContenantFruitAbstract {
      * @return String
      * @brief Méthode toString de la classe jus qui permet d'afficher le contenu du jus
      */
+    
     @Override
     public String toString() {
-        return "Jus{" +
-                "fruits=" + fruits +
-                '}';
+        HashMap<String, Integer> fruit_list = new HashMap<String, Integer>();
+        
+        for (Fruit fruit : fruits.keySet()) {
+           String classe = fruit.getClass().getSimpleName();
+           fruit_list.put(classe, fruit_list.getOrDefault(classe, 0) + 1);
+        }
+        
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Jus: ");
+        
+        for (Map.Entry<String, Integer> entry : fruit_list.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            stringBuilder.append(key).append(": ").append(value).append(",");
+            
+        }
+            return stringBuilder.toString();
     }
 
 
