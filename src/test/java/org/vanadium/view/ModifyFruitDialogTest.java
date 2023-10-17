@@ -6,6 +6,7 @@ import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.FruitItem;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
+import org.vanadium.view.modifyDialog.ModifyFruitDialog;
 
 import javax.swing.*;
 

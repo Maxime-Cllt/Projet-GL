@@ -1,8 +1,12 @@
 package org.vanadium.controler;
 
+import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.ContenantFruitAbstract;
+import org.vanadium.model.Macedoine.Macedoine;
 import org.vanadium.model.fruit.FruitItem;
-import org.vanadium.view.ModifyFruitDialog;
+import org.vanadium.view.modifyDialog.AbstractModifyDialog;
+import org.vanadium.view.modifyDialog.ModifyFruitDialog;
+import org.vanadium.view.modifyDialog.ModifyMacedoineDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -33,7 +37,17 @@ public class ControllerPopMenuList implements ActionListener {
                 }
             }
             case "Modifier" -> {
-                ModifyFruitDialog dialog = new ModifyFruitDialog((FruitItem) selectedFruits.get(0));
+                FruitItem selectedFruit = (FruitItem) selectedFruits.get(0);
+                AbstractModifyDialog dialog;
+                if (selectedFruit.getFruit().getClass() == Macedoine.class) {
+                    dialog = new ModifyMacedoineDialog((FruitItem) selectedFruits.get(0));
+                    final ControleurMainWindow controleur = new ControleurMainWindow();
+                    dialog.addControleur(controleur);
+                    controleur.setModele((ContenantFruitAbstract) selectedFruit.getFruit());
+                } else {
+                    System.out.println(selectedFruit.getFruit().getClass().getName());
+                    dialog = new ModifyFruitDialog((FruitItem) selectedFruits.get(0));
+                }
                 dialog.setVisible(true);
                 try {
                     m.retrait(dialog.getOldFruitItem().getFruit());

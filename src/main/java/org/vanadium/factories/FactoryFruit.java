@@ -1,6 +1,7 @@
 package org.vanadium.factories;
 
 import org.vanadium.interfaces.Fruit;
+import org.vanadium.model.Macedoine.Macedoine;
 import org.vanadium.model.fruit.Banane;
 import org.vanadium.model.fruit.Inconnue;
 import org.vanadium.model.fruit.Orange;
@@ -29,6 +30,7 @@ public class FactoryFruit {
             case ORANGE -> new Orange();
             case BANANE -> new Banane();
             case POMME -> new Pomme();
+            case MACEDEOINE -> new Macedoine();
             default -> new Inconnue();
         };
     }

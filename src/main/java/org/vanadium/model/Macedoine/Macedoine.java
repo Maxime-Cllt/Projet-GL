@@ -131,6 +131,7 @@ public class Macedoine extends ContenantFruitAbstract implements Fruit{
             return;
         }
         fruits.put(fruitQuantity.getKey(), fruitQuantity.getValue());
+        System.out.println("Notifying observers");
         setChanged();
         notifyObservers(this);
     }

@@ -1,4 +1,4 @@
-package org.vanadium.view;
+package org.vanadium.view.modifyDialog;
 
 import org.vanadium.factories.FactoryFruit;
 import org.vanadium.interfaces.Fruit;
@@ -8,10 +8,12 @@ import org.vanadium.model.fruit.Orange;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.net.URL;
+import java.util.Observable;
 
-public class ModifyFruitDialog extends JDialog {
+public class ModifyFruitDialog extends AbstractModifyDialog {
     private final FruitItem _old_fruit;
     private FruitItem _new_fruit;
     private JComboBox<Fruit.Pays> _pays;
@@ -140,7 +142,7 @@ public class ModifyFruitDialog extends JDialog {
     }
 
     /**
-     * @return Map.Entry<Fruit, Double>
+     * @return FruitItem
      * @brief Méthode qui permet de récupérer le fruit créé
      */
     public FruitItem getNewFruitItem() {
@@ -150,7 +152,17 @@ public class ModifyFruitDialog extends JDialog {
         return _new_fruit;
     }
 
+    /**
+     * @return FruitItem
+     * @brief Méthode qui permet de récupérer le fruit avant modification
+     */
     public FruitItem getOldFruitItem() {
         return _old_fruit;
+    }
+
+    public void addControleur(ActionListener c) {
+    }
+
+    public void update(Observable m, Object contenant) {
     }
 }
