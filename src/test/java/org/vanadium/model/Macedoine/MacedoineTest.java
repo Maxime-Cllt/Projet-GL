@@ -3,7 +3,6 @@ package org.vanadium.model.Macedoine;
 import org.junit.jupiter.api.Test;
 import org.vanadium.interfaces.Fruit;
 import org.vanadium.model.fruit.Banane;
-import org.vanadium.model.fruit.Inconnue;
 import org.vanadium.model.fruit.Orange;
 import org.vanadium.model.fruit.Pomme;
 
@@ -11,9 +10,16 @@ import java.util.AbstractMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class MacedoineTest {
+    
+    @Mock
+    Fruit fruit;
+            
     Orange orange;
     Banane banane;
     Pomme pomme;
@@ -45,47 +51,43 @@ class MacedoineTest {
 
     @Test
     void getFruits() {
-        assertEquals(0, macedoine.getFruits().size());
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, macedoine.getFruits().size());
     }
 
     @Test
     void setFruits() {
-        assertEquals(0, macedoine.getFruits().size());
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, macedoine.getFruits().size());
     }
 
     @Test
     void getTailleContenant() {
         assertEquals(0, macedoine.getTailleContenant());
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, macedoine.getTailleContenant());
         
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(2, macedoine.getTailleContenant());
         
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
         assertEquals(3, macedoine.getTailleContenant());
         
-        Inconnue inconnue = new Inconnue();
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(inconnue, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
         assertEquals(4, macedoine.getTailleContenant());
     }
 
     @Test
     void getFruit() {
-        assertEquals(0, macedoine.getTailleContenant());
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
     }
 
     @Test
     void estVide() {
         assertEquals(0, macedoine.getTailleContenant());
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(1, macedoine.getTailleContenant());
-        macedoine.retrait(orange);
+        macedoine.retrait(fruit);
         assertEquals(0, macedoine.getTailleContenant());
     }
 
@@ -101,16 +103,14 @@ class MacedoineTest {
         
         macedoine.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
         assertEquals(3, macedoine.getTailleContenant());
-        
-        Inconnue inconnue = new Inconnue();
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(inconnue, 1.0));
+
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(4, macedoine.getTailleContenant());
     }
 
     @Test
     void ajoutMacedoine() {
         //1ere macedoine
-        assertEquals(0, macedoine.getTailleContenant());
         macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(1, macedoine.getTailleContenant());
         
@@ -128,7 +128,6 @@ class MacedoineTest {
 
     @Test
     void retrait() {
-        assertEquals(0, macedoine.getTailleContenant());
         macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(1, macedoine.getTailleContenant());
         macedoine.retrait(orange);
@@ -156,17 +155,13 @@ class MacedoineTest {
     @Test
     void getPoidsTotal() {
         assertEquals(0, macedoine.getPoidsTotal());
-        Orange orange = new Orange();
         macedoine.ajout(new AbstractMap.SimpleEntry<>(orange, 1.0));
         assertEquals(1.0, macedoine.getPoidsTotal());
-        Banane banane = new Banane();
         macedoine.ajout(new AbstractMap.SimpleEntry<>(banane, 1.0));
         assertEquals(2.0, macedoine.getPoidsTotal());
-        Pomme pomme = new Pomme();
         macedoine.ajout(new AbstractMap.SimpleEntry<>(pomme, 1.0));
         assertEquals(3.0, macedoine.getPoidsTotal());
-        Inconnue inconnue = new Inconnue();
-        macedoine.ajout(new AbstractMap.SimpleEntry<>(inconnue, 1.0));
+        macedoine.ajout(new AbstractMap.SimpleEntry<>(fruit, 1.0));
         assertEquals(4.0, macedoine.getPoidsTotal());
     }
 
