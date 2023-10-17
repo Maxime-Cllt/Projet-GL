@@ -5,12 +5,13 @@ import org.vanadium.interfaces.Fruit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FruitTest {
 
     @Test
     void isSeedless() {
-        assertFalse(new Banane().isSeedless());
+        assertTrue(new Banane().isSeedless());
         assertFalse(new Orange().isSeedless());
         assertFalse(new Pomme().isSeedless());
         assertFalse(new Inconnue().isSeedless());
