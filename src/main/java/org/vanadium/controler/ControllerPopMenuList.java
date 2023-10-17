@@ -44,6 +44,8 @@ public class ControllerPopMenuList implements ActionListener {
                     final ControleurMainWindow controleur = new ControleurMainWindow();
                     dialog.addControleur(controleur);
                     controleur.setModele((ContenantFruitAbstract) selectedFruit.getFruit());
+                    ((ContenantFruitAbstract) selectedFruit.getFruit()).addObserver(dialog);
+                    ((ContenantFruitAbstract) selectedFruit.getFruit()).notifyObservers();
                 } else {
                     System.out.println(selectedFruit.getFruit().getClass().getName());
                     dialog = new ModifyFruitDialog((FruitItem) selectedFruits.get(0));

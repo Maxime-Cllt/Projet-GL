@@ -95,7 +95,7 @@ public class ModifyMacedoineDialog extends AbstractModifyDialog {
     }
 
     public void update(Observable m, Object contenant) {     //This method is called whenever the observed object is changed
-        System.out.println("Observer notified");
+        System.out.println("Dialog Observer notified");
         ArrayList<FruitItem> fruits = new ArrayList<>();
         for (Fruit f : ((ContenantFruitAbstract) contenant).getFruits().keySet()) {
             fruits.add(new FruitItem(f, ((ContenantFruitAbstract) contenant).getFruits().get(f)));
