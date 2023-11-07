@@ -53,7 +53,7 @@ achats, et permet de finaliser l'achat.
 
 <h2 id="installation">Execution :</h2>
 
-1. Télécharger le Build de la dernière version dans la section "release" et lancer la commande suivante :
+1. Télécharger le Build de la dernière version <a href="https://github.com/Maxime-Cllt/Projet-GL/releases">ici</a> et lancer la commande suivante :
 
 ```shell
 java -jar [nom_du_fichier].jar
